@@ -39,7 +39,7 @@
     - phpinfo.php
 
 - name: Configure index nginx host
-  template: src=index.nginx dest=/etc/nginx/sites-available/index
+  template: src=index.conf dest=/etc/nginx/sites-available/index
 
 - name: Enable nginx hosts
   file: src=/etc/nginx/sites-available/{{ item }} dest=/etc/nginx/sites-enabled/{{ item }} state=link
