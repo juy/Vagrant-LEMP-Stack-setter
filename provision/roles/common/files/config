@@ -1,0 +1,3 @@
+ClientAliveInterval 30
+TCPKeepAlive yes
+ClientAliveCountMax 99999

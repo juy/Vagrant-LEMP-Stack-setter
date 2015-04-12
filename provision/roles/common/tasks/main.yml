@@ -26,5 +26,10 @@
 - name: Disable SSH last login print
   lineinfile: dest=/etc/ssh/sshd_config regexp="PrintLastLog yes" line="PrintLastLog no"
 
+- name: Copy ssh config file
+  copy: src={{ item }} dest={{ home_dir }}/.ssh/{{ item }} owner={{ user }} group={{ user }} mode=640
+  with_items:
+    - config
+
 - name: Add vagrant user to www-data
   user: name=vagrant groups=www-data append=yes
