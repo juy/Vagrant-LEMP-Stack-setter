@@ -1,0 +1,69 @@
+{% if git_user_name and git_user_email %}
+[user]
+    name = {{ git_user_name }}
+    email = {{ git_user_email }}
+
+{% endif %}
+[core]
+    editor = vim
+    excludesfile = /home/vagrant/.gitignore_global
+
+[http]
+    postBuffer = 65536000
+
+[credential]
+    helper = cache --timeout=86400
+
+[push]
+    default = simple
+
+[color]
+    ui = auto
+
+[color "branch"]
+    current = yellow reverse
+    local = yellow
+    remote = green
+
+[color "diff"]
+    meta = yellow bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
+
+[color "status"]
+    added = yellow
+    changed = green
+    untracked = cyan
+
+[alias]
+    # Basic
+    last = log -1 HEAD
+    st = status -sb
+    co = checkout
+    word = diff --word-diff
+    lives = !git-log-live
+
+    # Log
+    lp = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit
+    lg = log --graph --decorate --relative-date --oneline
+
+    # Flow
+    fs = flow feature start
+    ff = flow feature finish
+
+    # Infos
+    count = shortlog -sn
+    df = diff --color
+    wdf = diff --word-diff --color
+    fdf = diff --name-only --color
+    br = branch -a
+    sh = show --pretty=format: --name-only
+
+    # Push/pull/commit
+    pdev = push origin develop
+    udev = pull origin develop
+    amend = commit --amend
+    cm = commit
+    cmm = commit -m
+    cma = commit -am

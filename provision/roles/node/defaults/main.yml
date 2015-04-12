@@ -1,0 +1,8 @@
+---
+node_packages:
+  - bower
+  - gulp
+  - grunt-cli
+  - brunch
+  #- sass
+  #- compass

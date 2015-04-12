@@ -1,0 +1,30 @@
+---
+- name: Install various packages
+  apt: name={{ item }} state=latest update_cache=yes cache_valid_time=3600
+  with_items: sys_packages
+
+# Real-time metrics for nginx server  https://github.com/lebinh/ngxtop
+- name: Install ngxtop python package
+  pip: name=ngxtop
+
+- name: Set the hostname
+  shell: hostname {{ hostname }}
+
+- name: Set the hostname /etc/hostname
+  shell: echo {{ hostname }} > /etc/hostname
+
+- name: Set locales
+  locale_gen: name={{ item }} state=present
+  with_items: locales
+
+- name: Set timezone variables
+  template: src=timezone.j2 dest=/etc/timezone owner=root group=root mode=0644 backup=no
+  notify:
+    - dpkg-reconfigure tzdata
+    - configure localtime
+
+- name: Disable SSH last login print
+  lineinfile: dest=/etc/ssh/sshd_config regexp="PrintLastLog yes" line="PrintLastLog no"
+
+- name: Add vagrant user to www-data
+  user: name=vagrant groups=www-data append=yes

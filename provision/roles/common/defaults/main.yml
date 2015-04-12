@@ -1,0 +1,19 @@
+---
+locales: [ en_US.UTF-8, tr_TR.UTF-8 ]
+sys_packages:
+  - curl
+  - dos2unix
+  - libmcrypt4
+  - libpcre3-dev
+  - python2.7-dev
+  - python-pip
+  - re2c
+  - memcached
+  - whois
+  - unzip
+  - htop
+  - screen
+  - autojump
+  - zsh
+  - sqlite3
+  - libsqlite3-dev

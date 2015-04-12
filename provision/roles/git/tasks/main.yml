@@ -1,0 +1,13 @@
+---
+- name: Install git
+  apt_repository: repo='ppa:git-core/ppa' update_cache=yes
+
+- name: Install git extras
+  apt: name={{ item }} state=latest
+  with_items: git_packages
+
+- name: Copy .gitconfig and .gitignore to home directory
+  template: src={{ item }}.j2 dest={{ home_dir }}/.{{ item }} owner={{ user }} group={{ user }} mode=640
+  with_items:
+    - gitconfig
+    - gitignore

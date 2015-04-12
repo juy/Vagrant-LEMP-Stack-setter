@@ -1,0 +1,6 @@
+---
+git_packages:
+  - git
+  - git-core
+  - git-flow
+  - git-extras

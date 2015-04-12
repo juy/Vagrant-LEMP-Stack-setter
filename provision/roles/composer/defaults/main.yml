@@ -1,0 +1,13 @@
+---
+composer_global_packages:
+  laravel/installer: "~1.1"
+  laravel/envoy: "~1.0"
+  #laravel/liferaft: "~1.0"
+  #phpunit/phpunit: "@stable"
+  #phpunit/phpunit: "~4.1.*"
+  #codeception/codeception: "*"
+  #phpspec/phpspec: "2.0.*@dev"
+  #squizlabs/php_codesniffer: "1.5.*"
+  #mockery/mockery: "dev-master"
+  #fabpot/php-cs-fixer: "dev-master"
+  #robmorgan/phinx: "*"

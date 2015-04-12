@@ -1,0 +1,38 @@
+---
+# Vagrantfile configuration
+  box_ipaddress: "192.168.12.12"
+  box_memory: 2048
+  box_cpu: 1
+  box_name: "juy"
+  box_user: "vagrant"
+  hostname: "juy"
+  timezone: Europe/Istanbul
+
+# MySQL, PostgreSQL root password, same with Laravel Homestead
+  sql_root_password: "secret"
+
+# Git config user credentials
+  git_user_name: ""
+  git_user_email: ""
+
+# Ansible pre settings
+  ansible_provision: true
+  ansible_verbose: false
+
+# Install components:
+# - To install a component set it to true.
+# - To leave a component out of the install set the value to false.
+  mysql_install: true
+  pgsql_install: true
+  blackfire_install: true
+  #pimpmylog_install: false # Not ready
+  #mariadb_install: false   # Not ready
+  #mongodb_install: false   # Not ready
+  # Tools
+  beanstalkd_console_install: true
+  redis_commander_install: true
+
+# For some development test
+  test_install: true
+  debug_test_message: "Debug message test"
+  test_task_message: "Test Task"

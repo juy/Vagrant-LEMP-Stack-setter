@@ -1,0 +1,29 @@
+---
+- name: Clone Prezto repo
+  git: repo=https://github.com/sorin-ionescu/prezto.git dest={{ home_dir }}/.zprezto
+  sudo_user: "{{ user }}"
+
+- name: Link in prezto files
+  file: state=link src={{ home_dir }}/.zprezto/runcoms/{{ item }} path={{ home_dir }}/.{{ item }} owner={{ user }} group={{ user }}
+  with_items:
+    - zlogin
+    - zlogout
+    - zpreztorc
+    - zprofile
+    - zshenv
+    - zshrc
+
+- name: Copy config files
+  copy: src={{ item }} dest={{ home_dir }}/.zprezto/runcoms/{{ item }} owner={{ user }} group={{ user }} mode=640
+  with_items:
+    - zlogin
+    - zlogout
+    - zpreztorc
+    - zshrc
+
+- name: Copy themes
+  copy: src={{ item }} dest={{ home_dir }}/.zprezto/modules/prompt/functions/{{ item }} owner={{ user }} group={{ user }} mode=640
+  with_items: prompt_juysoft_setup
+
+- name: Set zsh as default shell
+  user: name={{ user }} shell=/bin/zsh

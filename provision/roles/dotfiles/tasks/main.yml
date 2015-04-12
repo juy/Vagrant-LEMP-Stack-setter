@@ -1,0 +1,5 @@
+---
+- name: Copy dotfiles
+  copy: src={{ item }} dest={{ home_dir }}/{{ item }} owner={{ user }} group={{ user }} mode=640
+  with_items:
+    - .nanorc

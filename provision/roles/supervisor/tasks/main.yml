@@ -1,0 +1,3 @@
+---
+- name: Install supervisor
+  apt: name=supervisor state=latest

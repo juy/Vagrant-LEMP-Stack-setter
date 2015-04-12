@@ -1,0 +1,9 @@
+---
+- name: restart nginx
+  service: name=nginx state=restarted
+
+- name: restart php5-fpm
+  service: name=php5-fpm state=restarted
+
+- name: reload redis-commander
+  supervisorctl: name=redis state=started

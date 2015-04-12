@@ -1,0 +1,10 @@
+---
+- name: Install beanstalkd
+  apt: name=beanstalkd state=latest
+
+- name: Set beanstalkd start
+  lineinfile: dest=/etc/default/beanstalkd regexp="START=yes" line="START=yes"
+  notify: restart beanstalkd
+
+#- name: ensure beanstalkd is running
+#  service: name=beanstalkd state=started enabled=yes

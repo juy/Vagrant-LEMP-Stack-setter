@@ -1,0 +1,23 @@
+---
+# Redis Commander
+# https://github.com/joeferner/redis-commander
+
+- name: Install redis commander
+  npm: name=redis-commander state=present global=yes
+  # "supervisor start on boot" lazım
+  # sudo supervisorctl start redis
+
+- name: Configure redis commander supervisor
+  template: src=redis.supervisor dest=/etc/supervisor/conf.d/redis.conf
+  notify: reload redis-commander
+
+- name: Configure redis commander nginx host
+  template: src=redis.nginx dest=/etc/nginx/sites-available/redis
+
+- name: Enable nginx hosts
+  file: src=/etc/nginx/sites-available/{{ item }} dest=/etc/nginx/sites-enabled/{{ item }} state=link
+  with_items:
+    - redis
+  notify:
+    - restart nginx
+    - restart php5-fpm

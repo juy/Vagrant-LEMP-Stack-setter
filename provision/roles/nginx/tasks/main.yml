@@ -1,0 +1,48 @@
+---
+- name: Add nginx repository
+  apt_repository: repo='ppa:nginx/stable' update_cache=yes
+
+- name: Install nginx
+  apt: name=nginx state=installed
+
+- name: Remove default vhost
+  file: dest={{ item }} state=absent
+  with_items:
+    - "/etc/nginx/sites-enabled/default"
+    - "/etc/nginx/sites-available/default"
+  notify: restart nginx
+
+# Copy fastcgi_params to Nginx because they broke it on the PPA
+- name: Copy fastcgi_params
+  copy: src=fastcgi_params dest=/etc/nginx/fastcgi_params
+
+- name: Set nginx user
+  lineinfile: dest=/etc/nginx/nginx.conf regexp="{{ item.regex }}" line="{{ item.line }}"
+  with_items:
+    - {regex: "user .*;", line: "user vagrant;"}
+    - {regex: "server_names_hash_bucket_size.*", line: "server_names_hash_bucket_size 64;"}
+  notify: restart nginx
+
+- name: Create srv and www directory
+  file: path={{ item }} state=directory owner={{ user }} group={{ user }}
+  with_items:
+    - "{{ srv_dir }}"
+    - "{{ srv_dir }}/www"
+    - "{{ srv_dir }}/index"
+
+# Index
+
+- name: Copy default index and phpinfo file into index directory
+  copy: src={{ item }} dest={{ srv_dir }}/index/{{ item }} owner={{ user }} group={{ user }} mode=640
+  with_items:
+    - index.php
+    - phpinfo.php
+
+- name: Configure index nginx host
+  template: src=index.nginx dest=/etc/nginx/sites-available/index
+
+- name: Enable nginx hosts
+  file: src=/etc/nginx/sites-available/{{ item }} dest=/etc/nginx/sites-enabled/{{ item }} state=link
+  with_items:
+    - index
+  notify: restart nginx

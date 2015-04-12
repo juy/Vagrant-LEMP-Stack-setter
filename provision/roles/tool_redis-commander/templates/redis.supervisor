@@ -1,0 +1,10 @@
+[program:redis]
+
+command=redis-commander --redis-port=6379 --redis-host=127.0.0.1 --port=8081
+
+#command=/usr/local/bin/redis-server /etc/redis.conf
+autostart=true
+autorestart=true
+user=root
+#stdout_logfile=/var/log/redis/stdout.log
+#stderr_logfile=/var/log/redis/stderr.log

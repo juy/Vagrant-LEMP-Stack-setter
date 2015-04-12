@@ -1,0 +1,147 @@
+#
+# Executes commands at the start of an interactive session.
+#
+
+# Source Prezto.
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
+
+# Customize to your needs...
+
+# ---------------------------------------------------------------
+# ZSH Tweaks
+# ---------------------------------------------------------------
+#zstyle -e ':completion::*:*:*:hosts' hosts 'reply=(${=${${(f)"$(cat {/etc/ssh_,~/.ssh/known_}hosts(|2)(N)
+
+# Other customizations
+unsetopt CORRECT    # Disable autocorrect guesses. Happens when typing a wrong
+                    # command that may look like an existing one.
+
+
+# ---------------------------------------------------------------
+# Environment Variables and Settings
+# ---------------------------------------------------------------
+
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/bin" ] ; then
+  PATH="$HOME/bin:$PATH"
+fi
+
+# composer vendor bin (i.e. for laravel/installer)
+if [ -d "$HOME/.composer/vendor/bin" ] ; then
+  PATH="$HOME/.composer/vendor/bin:$PATH"
+fi
+
+
+# ---------------------------------------------------------------
+# Aliases
+# ---------------------------------------------------------------
+
+# Reload this config
+alias szsh='source ~/.zshrc'
+
+# ls
+#alias ls='pwd; ls -F --color=always'
+alias ls='ls -F --color=always'
+alias dir='dir -F --color=always'
+alias ll='ls -lah'        # list all with human readable
+alias lsa='ls -lah'       # list all with human readable
+alias lsd='ls -d */'      # list directories only
+alias lsf='ls -l *(-^/)'  # list regular files only
+alias lsfa='ls -l *(D-.)' # list regular and hidden files
+
+# cd
+alias ..="cd .."
+alias ...="cd ../.."
+alias cd..='cd ..'
+alias h='cd ~'
+
+#alias cdwww='cd ~/www'
+#alias cd-www='cd ~/www'
+#alias cdariza='cd ~/www/ariza-takip'
+#alias cd-ariza='cd ~/www/ariza-takip'
+
+# Laravel
+alias art='php artisan'
+alias artisan='php artisan'
+
+# Composer
+alias composer="hhvm -v ResourceLimit.SocketDefaultTimeout=30 -v Http.SlowQueryThreshold=30000 -v Eval.Jit=false /usr/local/bin/composer"
+alias autoload='composer dump-autoload'
+
+# Screen
+# show screen job with 'screen -ls'
+# reattach screenn with: 'screen -r [pid/name]'
+# detach screen with: 'ctrl + a,d'
+alias screenbg="screen -dmS"
+
+# Grep
+alias grep='grep --color=auto -in'
+alias grepd="grep -rn" # search string in directory
+
+# Tar
+alias tarx="tar -xzvf" # extract tar
+alias tarc="tar -czvf" # compress tar
+
+# Other
+alias cl='clear'
+alias wget='wget -c'
+alias npm='npm --no-bin-links'
+alias apt-get='sudo apt-get'
+
+alias cp='cp -iv'
+alias rm='rm -i'
+alias mv='mv -iv'
+
+
+# ---------------------------------------------------------------
+# GIT
+# ---------------------------------------------------------------
+
+# ignore changes on tracked file
+alias ignore="git update-index --assume-unchanged"
+# track changes
+alias unignore="git update-index --no-assume-unchanged"
+# list tracked files with changes ignored
+alias ignored="git ls-files -v | grep '^[[:lower:]]'"
+# pull
+#alias gpl="git pull"
+# pushhphonnee
+#alias gps="git push"
+# add
+#alias ga="git add"
+
+# git commit + add
+#function gcoma(){
+#  git commit -a -m "$1"
+#}
+#function gcom(){
+#  git commit -m "$1"
+#}
+
+# git status
+#alias gst="git status"
+
+# git archive export
+#function gexport(){
+#  git archive master | tar -x -C $1
+#}
+
+# git log
+#function glog(){
+#  git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+#}
+
+# make dir to git repro + set remote repro
+#function gitinit(){
+#  git init
+#  git add .
+#  git commit -m 'First commit'
+#  printf "###### First commit executed ###### \n"
+#  git remote add origin $1
+#  git push -u origin master
+#  printf "###### Remote origin added and pushed to remote ###### \n"
+#  git config branch.master.remote origin
+#  git config branch.master.merge refs/heads/master
+#}

@@ -1,0 +1,15 @@
+---
+- name: Register the packagecloud key
+  apt_key: url=https://packagecloud.io/gpg.key
+
+- name: Add Blackfire package list in source.list
+  apt_repository: repo='deb http://packages.blackfire.io/debian any main' update_cache=yes
+
+- name: Install blackfire
+  apt: name={{ item }} state=latest
+  with_items:
+    - blackfire-agent
+    - blackfire-php
+  notify:
+    - restart nginx
+    - restart hhvm

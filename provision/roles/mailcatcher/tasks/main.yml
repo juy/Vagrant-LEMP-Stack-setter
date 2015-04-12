@@ -1,0 +1,30 @@
+---
+- name: Install MailCatcher prerequisite packages
+  apt: name=ruby-dev state=latest
+
+- name: Install MailCatcher
+  shell: gem install mailcatcher creates=/usr/bin/mailcatcher
+
+# TODO: php kurulumuna bağlanmalı, php kurulmadıysa çalışmamalı
+# TODO 00-php.ini ye eklense
+- name: Configure PHP Email
+  #lineinfile: dest=/etc/php5/fpm/php.ini regexp="^[#|;]?sendmail_path =" insertafter="^[#|;]?sendmail_path =" line="sendmail_path = /usr/bin/env catchmail"
+  lineinfile: dest=/etc/php5/fpm/conf.d/00-php.ini line="sendmail_path = /usr/bin/env catchmail"
+  notify: restart php5-fpm
+
+# TODO 00-php.ini ye eklense
+- name: Configure PHP Email
+  #lineinfile: dest=/etc/php5/cli/php.ini regexp="^[#|;]?sendmail_path =" insertafter="^[#|;]?sendmail_path =" line="sendmail_path = /usr/bin/env catchmail"
+  lineinfile: dest=/etc/php5/cli/conf.d/00-php.ini line="sendmail_path = /usr/bin/env catchmail"
+  notify: restart php5-fpm
+
+- name: Kill MailCatcher
+  command: pkill mailcatcher
+  ignore_errors: yes
+
+- name: Add mailcatcher starting command in rc.local
+  lineinfile: dest=/etc/rc.local insertbefore='^exit' line="/usr/local/bin/mailcatcher --http-ip=0.0.0.0"
+
+- name: Run MailCatcher
+  command: mailcatcher --ip=0.0.0.0
+  #shell: "mailcatcher --http-ip=0.0.0.0 || :"

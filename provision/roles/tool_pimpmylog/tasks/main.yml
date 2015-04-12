@@ -1,0 +1,12 @@
+---
+
+
+
+
+- name: Enable nginx hosts
+  file: src=/etc/nginx/sites-available/{{ item }} dest=/etc/nginx/sites-enabled/{{ item }} state=link
+  with_items:
+    - pimpmylog
+  notify:
+    - restart nginx
+    - restart php5-fpm
