@@ -2,6 +2,7 @@
 composer_global_packages:
   laravel/installer: "~1.1"
   laravel/envoy: "~1.0"
+  laravel/lumen-installer: "~1.0"
   #laravel/liferaft: "~1.0"
   #phpunit/phpunit: "@stable"
   #phpunit/phpunit: "~4.1.*"
