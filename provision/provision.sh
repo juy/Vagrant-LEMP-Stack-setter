@@ -20,7 +20,7 @@ sudo sed -i "s/ip/$box_ipaddress/g" /etc/ansible/hosts
 echo "Ansible provision start..."
 
 if [ "$verbose" = "y" ]; then
-    sudo -i ansible-playbook /vagrant/provision/playbook.yml --connection=local -v
+	sudo -i ansible-playbook /vagrant/provision/playbook.yml --connection=local -v
 else
 	sudo -i ansible-playbook /vagrant/provision/playbook.yml --connection=local
 fi

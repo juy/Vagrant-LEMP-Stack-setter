@@ -5,7 +5,7 @@
 # sudo bash /vagrant/provision/vagrant-clean.sh
 
 print_green(){
-  echo -e "\e[32m${1}\e[0m"
+	echo -e "\e[32m${1}\e[0m"
 }
 
 
