@@ -20,6 +20,9 @@ Vagrant.configure(2) do |config|
   config.vm.boot_timeout = 60
   config.vm.hostname = $config['hostname']
 
+  # https://github.com/dotless-de/vagrant-vbguest
+  config.vbguest.auto_update = false
+
   # SSH settings
   #config.ssh.username = 'vagrant'
   #config.ssh.password = 'vagrant'
