@@ -52,7 +52,6 @@
 #    - {regex: "date.timezone =.*", line: "date.timezone = UTC"}
 - name: Set some PHP-FPM settings
   template: src=php-fpm.ini dest=/etc/php5/fpm/conf.d/00-php.ini
-  notify: restart php5-fpm
 
 # Set Some PHP CLI Settings
 # - name: Set some php cli settings
@@ -64,3 +63,4 @@
 #     - {regex: "date.timezone =.*", line: "date.timezone = UTC"}
 - name: Set some php cli settings
   template: src=php.ini dest=/etc/php5/cli/conf.d/00-php.ini
+  notify: restart php5-fpm
