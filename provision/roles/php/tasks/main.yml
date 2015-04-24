@@ -4,28 +4,7 @@
 
 - name: Install PHP 5.6
   apt: name="{{ item }}" state=latest force=yes
-  with_items:
-    - php5-common
-    - php5-cli
-    - php5-dev
-    - php5-fpm
-    - php5-mysqlnd
-    - php5-pgsql
-    - php5-sqlite
-    - php5-json
-    - php5-curl
-    - php5-gd
-    - php5-imagick
-    - php5-gmp
-    - php5-imap
-    - php5-mcrypt
-    - php5-xdebug
-    - php5-apcu
-    - php5-memcached
-    - php5-redis
-    - php5-intl
-    - php5-xmlrpc
-    - php-pear
+  with_items: php_packages
 
 - name: Make mcrypt available
   #command: php5enmod mcrypt
