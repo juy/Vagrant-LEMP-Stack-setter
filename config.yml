@@ -25,7 +25,6 @@
   mysql_install: true
   pgsql_install: true
   blackfire_install: true
-  #pimpmylog_install: false # Not ready
   #mariadb_install: false   # Not ready
   #mongodb_install: false   # Not ready
   # Tools

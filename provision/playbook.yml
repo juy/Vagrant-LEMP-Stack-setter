@@ -35,7 +35,5 @@
     #- tool_base
     #- { role: tool_beanstalkd-console, when: "beanstalkd_console_install" }
     #- { role: tool_redis-commander, when: "redis_commander_install" }
-    #- { role: tool_pimpmylog, when: "pimpmylog_install" }
-    #- tool_laravel
     #
     - finalize

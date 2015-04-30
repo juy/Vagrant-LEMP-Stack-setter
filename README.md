@@ -56,7 +56,6 @@ Provision with ansible.
 - **Web GUI tools**
 	- [ ] Beanstalkd console - https://github.com/ptrofimov/beanstalk_console
 	- [ ] Redis Commander - https://github.com/joeferner/redis-commander
-	- [ ] Pimp my Log - http://pimpmylog.com/
 
 
 ### TODO
