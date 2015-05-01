@@ -5,16 +5,13 @@
 - name: Install MailCatcher
   shell: gem install mailcatcher creates=/usr/bin/mailcatcher
 
-# TODO: php kurulumuna bağlanmalı, php kurulmadıysa çalışmamalı
-# TODO 00-php.ini ye eklense
+# TODO 00-php.ini ye eklenebilir mi ?
 - name: Configure PHP Email
-  #lineinfile: dest=/etc/php5/fpm/php.ini regexp="^[#|;]?sendmail_path =" insertafter="^[#|;]?sendmail_path =" line="sendmail_path = /usr/bin/env catchmail"
   lineinfile: dest=/etc/php5/fpm/conf.d/00-php.ini line="sendmail_path = /usr/bin/env catchmail"
   notify: restart php5-fpm
 
-# TODO 00-php.ini ye eklense
+# TODO 00-php.ini ye eklenebilir mi ?
 - name: Configure PHP Email
-  #lineinfile: dest=/etc/php5/cli/php.ini regexp="^[#|;]?sendmail_path =" insertafter="^[#|;]?sendmail_path =" line="sendmail_path = /usr/bin/env catchmail"
   lineinfile: dest=/etc/php5/cli/conf.d/00-php.ini line="sendmail_path = /usr/bin/env catchmail"
   notify: restart php5-fpm
 

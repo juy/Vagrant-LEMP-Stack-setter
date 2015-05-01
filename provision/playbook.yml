@@ -6,9 +6,6 @@
     - name: Load config file
       include_vars: "{{ item }}"
       with_items: config_file
-  post_tasks:
-    # Run post provisioning tests to ensure everything has been provisioned correctly.
-    #- include: tests/main.yml
   roles:
     #- { role: test, tags: ["test"], when: "test_install" }
     - sources
@@ -29,10 +26,8 @@
     - { role: postgresql, when: "pgsql_install" }
     - { role: blackfire, when: "blackfire_install" }
     #
-    #- { role: mongodb, when: "mongodb_install" }
-    #
-    #- tool_base
-    #- { role: tool_beanstalkd-console, when: "beanstalkd_console_install" }
-    #- { role: tool_redis-commander, when: "redis_commander_install" }
+    - tool_base
+    - { role: tool_beanstalkd-console, when: "beanstalkd_console_install" }
+    - { role: tool_redis-commander, when: "redis_commander_install" }
     #
     - finalize

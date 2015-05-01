@@ -6,5 +6,6 @@
   lineinfile: dest=/etc/default/beanstalkd regexp="START=yes" line="START=yes"
   notify: restart beanstalkd
 
+# TODO: Need check this
 #- name: ensure beanstalkd is running
 #  service: name=beanstalkd state=started enabled=yes

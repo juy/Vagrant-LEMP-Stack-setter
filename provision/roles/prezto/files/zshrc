@@ -57,11 +57,6 @@ alias ...="cd ../.."
 alias cd..='cd ..'
 alias h='cd ~'
 
-#alias cdwww='cd ~/www'
-#alias cd-www='cd ~/www'
-#alias cdariza='cd ~/www/ariza-takip'
-#alias cd-ariza='cd ~/www/ariza-takip'
-
 # Laravel
 alias art='php artisan'
 alias artisan='php artisan'

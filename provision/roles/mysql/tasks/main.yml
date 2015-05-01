@@ -22,7 +22,6 @@
 
 - name: Create a new database
   mysql_db: name=homestead collation=utf8_general_ci
-  #mysql_db: name=homestead
 
 #- name: Create a database user
 #  mysql_user: name=root password=secret priv=*.*:ALL host=localhost

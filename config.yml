@@ -8,7 +8,7 @@
   hostname: "juy"
   timezone: Europe/Istanbul
 
-# MySQL, PostgreSQL root password, same with Laravel Homestead
+# MySQL, PostgreSQL root password. Same with Laravel Homestead.
   sql_root_password: "secret"
 
 # Git config user credentials
@@ -25,7 +25,6 @@
   mysql_install: true
   pgsql_install: true
   blackfire_install: true
-  #mongodb_install: false   # Not ready
   # Tools
   beanstalkd_console_install: true
   redis_commander_install: true
