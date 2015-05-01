@@ -8,7 +8,7 @@
 - name: Install hhvm package
   apt: name=hhvm state=latest
 
-# FIXME: "vagrant" {{ user }}  ile değiştirilmeli
+# TODO: "vagrant" change to {{ user }}, need check this
 - name: Configure hhvm to run as default user
-  replace: dest=/etc/default/hhvm regexp='#RUN_AS_USER="www-data"' replace='RUN_AS_USER="vagrant"'
+  replace: dest=/etc/default/hhvm regexp='#RUN_AS_USER="www-data"' replace='RUN_AS_USER="{{ user }}"'
   notify: restart hhvm
