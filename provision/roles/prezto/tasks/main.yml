@@ -21,9 +21,5 @@
     - zpreztorc
     - zshrc
 
-- name: Copy themes
-  copy: src={{ item }} dest={{ home_dir }}/.zprezto/modules/prompt/functions/{{ item }} owner={{ user }} group={{ user }} mode=640
-  with_items: prompt_juysoft_setup
-
 - name: Set zsh as default shell
   user: name={{ user }} shell=/bin/zsh
