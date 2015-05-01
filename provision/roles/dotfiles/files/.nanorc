@@ -1,2 +1,4 @@
 # Constantly display the cursor position in the status bar
 set const
+
+# TODO: need a config to not create backup file
