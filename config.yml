@@ -1,11 +1,11 @@
 ---
 # Vagrantfile configuration
-  box_ipaddress: "192.168.12.12"
+  box_ipaddress: "192.168.13.13"
   box_memory: 2048
   box_cpu: 1
-  box_name: "juy"
+  box_name: "juysetter"
   box_user: "vagrant"
-  hostname: "juy"
+  hostname: "juysetter"
   timezone: Europe/Istanbul
 
 # MySQL, PostgreSQL root password. Same with Laravel Homestead.

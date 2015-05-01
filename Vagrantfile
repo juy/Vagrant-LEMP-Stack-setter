@@ -1,11 +1,10 @@
-# Find the current vagrant directory
-#$vagrant_dir = File.expand_path(File.dirname(__FILE__))
-
-# Default config file
-#$config_file = $vagrant_dir + "/config.yml"
-$config_file = "config.yml"
+# Vagrant LEMP Stack
+# A development platform in a box, with everything you would need to develop PHP/Laravel websites.
+# See the readme file (README.md) for more information.
+# Contribute to this project at : https://github.com/juy/Vagrant-LEMP-Stack-setter
 
 # Include config from config file
+$config_file = "config.yml"
 require 'yaml'
 $config = YAML::load_file($config_file)
 
