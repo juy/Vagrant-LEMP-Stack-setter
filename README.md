@@ -32,11 +32,11 @@ Provision with ansible.
 - **Database & Cache**
 	- [x] MySQL
 	- [x] PostgreSQL
-	- [ ] MariaDB
 	- [x] SQLite
-	- [ ] MongoDB 
 	- [x] Redis
 	- [x] Memcached
+	- [ ] MariaDB
+	- [ ] MongoDB
 - **Asset compilation tools**
 	- [x] node.js
 	- [x] bower
@@ -54,13 +54,14 @@ Provision with ansible.
 	- [x] autojump
 	- [x] screen
 - **Web GUI tools**
-	- [ ] Beanstalkd console - https://github.com/ptrofimov/beanstalk_console
-	- [ ] Redis Commander - https://github.com/joeferner/redis-commander
+	- [x] Beanstalkd console - https://github.com/ptrofimov/beanstalk_console
+	- [x] Redis Commander - https://github.com/joeferner/redis-commander
 
 
 ### TODO
-- [ ] Test ansible provision on linux/ubuntu host
-- [ ] Some clean up
+- [ ] Test ansible provision on linux/ubuntu host.
+- [ ] "Web GUI tools" need more test for stability.
+- [ ] Some code clean up.
 
 
 ### License
