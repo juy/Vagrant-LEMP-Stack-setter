@@ -2,7 +2,7 @@
 
 /**
  * MySQL
- * TODO: PDO ile değiştirilecek
+ * TODO: Use PDO ?
  */
 
 $mysqli = @new mysqli('localhost', 'root', 'secret');
@@ -22,7 +22,7 @@ $mysqli->close();
  * PostgreSQL
  */
 
-// TODO: yapılacak
+// TODO: under construction
 //$dbconn = pg_connect('host=localhost port=5432 user=root password=secret');
 //$v = pg_version($dbconn);
 //echo $v['client'];
@@ -187,7 +187,7 @@ if ($m->addServer('localhost', 11211))
 	<div id="footer">
 		<div class="container">
 			<p class="muted credit">
-				<a href="#" target="_blank">Vagrant LAMP Stack</a> by
+				<a href="https://github.com/juy/Vagrant-LEMP-Stack" target="_blank">Vagrant LAMP Stack</a> by
 				<a href="http://juysoft.com" traget="_blank">JuySoft</a>.
 			</p>
 		</div>
