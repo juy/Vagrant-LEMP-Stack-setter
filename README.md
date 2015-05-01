@@ -22,7 +22,7 @@ Provision with ansible.
 	- [x] Nginx
 	- [x] PHP
 	- [x] HHVM
-	- [x] Git
+	- [x] Git, git-flow, git-extras
 	- [x] Composer
 	- [x] Mailcatcher
 	- [x] Ruby
