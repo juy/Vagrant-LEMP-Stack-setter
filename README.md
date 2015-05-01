@@ -60,6 +60,7 @@ Provision with ansible.
 
 ### TODO
 - [ ] Test ansible provision on linux/ubuntu host
+- [ ] Some clean up
 
 
 ### License
