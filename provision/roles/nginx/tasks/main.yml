@@ -15,6 +15,7 @@
 - name: Copy fastcgi_params
   copy: src=fastcgi_params dest=/etc/nginx/fastcgi_params
 
+# TODO: vagrant user hard coded
 - name: Set nginx user
   lineinfile: dest=/etc/nginx/nginx.conf regexp="{{ item.regex }}" line="{{ item.line }}"
   with_items:

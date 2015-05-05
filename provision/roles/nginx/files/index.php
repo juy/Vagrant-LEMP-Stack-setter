@@ -84,9 +84,7 @@ if ($m->addServer('localhost', 11211))
 	<style type="text/css">
 	html, body { height: 100%; }
 	#wrap {
-		min-height: 100%;
-		height: auto !important;
-		height: 100%;
+		min-height: 100%; height: auto !important; height: 100%;
 		margin: 0 auto -60px;
 	}
 	#push, #footer { height: 60px; }
@@ -176,7 +174,9 @@ if ($m->addServer('localhost', 11211))
 					<td>secret</td>
 				</tr>
 				<tr>
-					<td colspan="2"><em>Note: External access is enabled! Just use <strong><?php echo $_SERVER['SERVER_ADDR'] ?></strong> as host.</em></td>
+					<td colspan="2">
+						<em>Note: External access is enabled! Just use <strong><?php echo $_SERVER['SERVER_ADDR'] ?></strong> as host.</em>
+					</td>
 				</tr>
 			</table>
 
