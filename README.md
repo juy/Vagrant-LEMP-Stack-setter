@@ -37,7 +37,7 @@ Provision with ansible.
 	- [x] Memcached
 	- [ ] MariaDB
 	- [ ] MongoDB
-- **Asset compilation tools**
+- **Asset tools**
 	- [x] node.js
 	- [x] bower
 	- [x] gulp
