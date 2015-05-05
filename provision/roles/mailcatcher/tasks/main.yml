@@ -5,12 +5,10 @@
 - name: Install MailCatcher
   shell: gem install mailcatcher creates=/usr/bin/mailcatcher
 
-# TODO: Can be added in 00-php.ini ?
 - name: Configure PHP Email
   lineinfile: dest=/etc/php5/fpm/conf.d/00-php.ini line="sendmail_path = /usr/bin/env catchmail"
   notify: restart php5-fpm
 
-# TODO: Can be added in 00-php.ini ?
 - name: Configure PHP Email
   lineinfile: dest=/etc/php5/cli/conf.d/00-php.ini line="sendmail_path = /usr/bin/env catchmail"
   notify: restart php5-fpm
