@@ -18,25 +18,23 @@ Provision with ansible.
 
 - **Global**
 	- [x] Ubuntu 14.10 (utopic), x64 - [chef/ubuntu-14.10](https://atlas.hashicorp.com/chef/boxes/ubuntu-14.10)
-	- [x] Ansible
-	- [x] Nginx
-	- [x] PHP
+	- [x] Ansible 1.7.2
+	- [x] Nginx 1.8.0
+	- [x] PHP 5.6
 	- [x] HHVM
-	- [x] Git, git-flow, git-extras
+	- [x] Git 2.4.0, git-flow, git-extras
 	- [x] Composer
 	- [x] Mailcatcher
-	- [x] Ruby
+	- [x] Ruby 2.1.2p95
 	- [x] Beanstalkd
 	- [x] Supervisord
 	- [x] Blackfire
 - **Database & Cache**
-	- [x] MySQL
-	- [x] PostgreSQL
+	- [x] MySQL 5.6.19
+	- [x] PostgreSQL 9.4.1
 	- [x] SQLite
-	- [x] Redis
+	- [x] Redis 3.0.0
 	- [x] Memcached
-	- [ ] MariaDB
-	- [ ] MongoDB
 - **Asset tools**
 	- [x] node.js
 	- [x] bower
