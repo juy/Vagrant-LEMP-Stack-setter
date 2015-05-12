@@ -25,6 +25,7 @@
 
 - name: Disable SSH last login print
   lineinfile: dest=/etc/ssh/sshd_config regexp="PrintLastLog yes" line="PrintLastLog no"
+  notify: restart sshd
 
 - name: Copy ssh config file
   copy: src=ssh_config dest={{ home_dir }}/.ssh/config owner={{ user }} group={{ user }} mode=640
