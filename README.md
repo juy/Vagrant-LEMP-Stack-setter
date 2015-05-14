@@ -2,6 +2,8 @@
 
 A development platform in a box, with everything you would need to develop PHP websites.
 
+**Current status:** Development, **Next:** Test, **Last:** Product
+
 > Used "chef/ubuntu-14.10" vagrant box *(virtualbox provider)* with ansible provision. Modified it for our own use, especially for Laravel projects. Tested only windows host.
 
 #### Help support this project
