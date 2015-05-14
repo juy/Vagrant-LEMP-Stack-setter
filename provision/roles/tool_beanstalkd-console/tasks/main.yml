@@ -3,11 +3,11 @@
 # https://github.com/ptrofimov/beanstalk_console
 
 - name: clone beanstalkd console
-  git: repo=https://github.com/ptrofimov/beanstalk_console.git dest={{ srv_dir }}/tools/beanstalkd
+  git: repo=https://github.com/ptrofimov/beanstalk_console.git dest={{ tool_dir }}/beanstalkd
   sudo_user: "{{ user }}"
 
 - name: Chmod 777 storage.json
-  command: sudo chmod 777 {{ srv_dir }}/tools/beanstalkd/storage.json
+  command: sudo chmod 777 {{ tool_dir }}/beanstalkd/storage.json
 
 - name: Configure beanstalkd console php-fpm pool
   template: src=beanstalkd.php-fpm dest=/etc/php5/fpm/pool.d/beanstalkd.conf

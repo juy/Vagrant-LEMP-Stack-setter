@@ -1,6 +1,6 @@
 server {
 	listen 8501;
-	root {{ srv_dir }}/tools/beanstalkd/public;
+	root {{ tool_dir }}/beanstalkd/public;
 
 	index index.php;
 

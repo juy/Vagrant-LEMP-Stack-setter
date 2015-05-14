@@ -1,3 +1,3 @@
 ---
 - name: Create tools directory
-  file: path={{ srv_dir }}/tools state=directory owner={{ user }} group={{ user }}
+  file: path={{ tool_dir }} state=directory owner={{ user }} group={{ user }}
