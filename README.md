@@ -20,22 +20,22 @@ Provision with ansible.
 
 - **Global**
 	- [x] Ubuntu 15.04 (vivid), x64 - [boxcutter/ubuntu1504](https://atlas.hashicorp.com/boxcutter/boxes/ubuntu1504)
-	- [x] Ansible 1.7.2
-	- [x] Nginx 1.8.0
-	- [x] PHP 5.6
+	- [x] Ansible
+	- [x] Nginx
+	- [x] PHP
 	- [x] HHVM
-	- [x] Git 2.4.0, git-flow, git-extras
+	- [x] Git, git-flow, git-extras
 	- [x] Composer
 	- [x] Mailcatcher
-	- [x] Ruby 2.1.2p95
+	- [x] Ruby
 	- [x] Beanstalkd
 	- [x] Supervisord
 	- [x] Blackfire
 - **Database & Cache**
-	- [x] MySQL 5.6.19
-	- [x] PostgreSQL 9.4.1
+	- [x] MySQL
+	- [x] PostgreSQL
 	- [x] SQLite
-	- [x] Redis 3.0.0
+	- [x] Redis
 	- [x] Memcached
 - **Asset tools**
 	- [x] node.js
