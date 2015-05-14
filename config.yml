@@ -11,10 +11,6 @@
 # MySQL, PostgreSQL root password. Same with Laravel Homestead.
   sql_root_password: "secret"
 
-# Git config user credentials
-  git_user_name: ""
-  git_user_email: ""
-
 # Ansible pre settings
   ansible_provision: true
   ansible_verbose: false
