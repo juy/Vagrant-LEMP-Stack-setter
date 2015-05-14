@@ -30,5 +30,5 @@
 - name: Copy ssh config file
   copy: src=ssh_config dest={{ home_dir }}/.ssh/config owner={{ user }} group={{ user }} mode=640
 
-- name: Add vagrant user to www-data
-  user: name=vagrant groups=www-data append=yes
+- name: Add default user to www-data
+  user: name={{ user }} groups=www-data append=yes
