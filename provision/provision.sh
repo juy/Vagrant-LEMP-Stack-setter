@@ -8,8 +8,8 @@ verbose=$2;
 if ! which ansible > /dev/null; then
 	# Ansible does't exist, install it
 	echo "Installing ansible";
-	sudo apt-get install -y software-properties-common
 	sudo apt-get update
+	sudo apt-get install -y software-properties-common
 	sudo apt-get install -y ansible
 fi
 
