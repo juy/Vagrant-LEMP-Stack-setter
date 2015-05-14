@@ -88,6 +88,7 @@ rm -f /home/vagrant/.zhistory
 rm -r /home/vagrant/.landscape
 rm -r /home/vagrant/.cache
 rm -r /home/vagrant/.zcompdump*
+rm -r /home/vagrant/.sudo_as_admin_successful
 history -c
 
 print_green 'Vagrant cleanup complete!'

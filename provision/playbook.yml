@@ -9,25 +9,25 @@
   roles:
     #- { role: test, tags: ["test"], when: "test_install" }
     - sources
-    - common
-    - git
-    - prezto
-    - dotfiles
-    - node
-    - hhvm
-    - beanstalkd
-    - redis
-    - supervisor
-    - composer
-    - php
-    - mailcatcher
-    - nginx
+    #- common
+    #- git
+    #- prezto
+    #- dotfiles
+    #- node
+    #- hhvm
+    #- beanstalkd
+    #- redis
+    #- supervisor
+    #- php
+    #- composer
+    #- mailcatcher
+    #- nginx
     - { role: mysql, when: "mysql_install" }
-    - { role: postgresql, when: "pgsql_install" }
-    - { role: blackfire, when: "blackfire_install" }
+    #- { role: postgresql, when: "pgsql_install" }
+    #- { role: blackfire, when: "blackfire_install" }
     #
-    - tool_base
-    - { role: tool_beanstalkd-console, when: "beanstalkd_console_install" }
-    - { role: tool_redis-commander, when: "redis_commander_install" }
+    #- tool_base
+    #- { role: tool_beanstalkd-console, when: "beanstalkd_console_install" }
+    #- { role: tool_redis-commander, when: "redis_commander_install" }
     #
-    - finalize
+    #- finalize

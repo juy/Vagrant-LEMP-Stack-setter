@@ -3,7 +3,7 @@
 
 - name: Ensure ubuntu distro is supported
   get_url:
-    url='https://deb.nodesource.com/node/dists/utopic/Release'
+    url='https://deb.nodesource.com/node/dists/{{ ubuntu_name }}/Release'
     dest=/dev/null
   register: distrosupported
 
@@ -15,13 +15,13 @@
 
 - name: Add nodesource apt sources list deb
   apt_repository:
-    repo='deb https://deb.nodesource.com/node utopic main'
+    repo='deb https://deb.nodesource.com/node {{ ubuntu_name }} main'
     state=present
   when: distrosupported|success
 
 - name: Add nodesource apt sources list deb src
   apt_repository:
-    repo='deb-src https://deb.nodesource.com/node utopic main'
+    repo='deb-src https://deb.nodesource.com/node {{ ubuntu_name }} main'
     state=present
   when: distrosupported|success
 

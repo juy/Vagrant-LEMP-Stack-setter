@@ -3,7 +3,7 @@
   apt_key: url=http://dl.hhvm.com/conf/hhvm.gpg.key
 
 - name: Add hhvm deb repository
-  apt_repository: repo='deb http://dl.hhvm.com/ubuntu utopic main' update_cache=yes
+  apt_repository: repo='deb http://dl.hhvm.com/ubuntu {{ ubuntu_name }} main' update_cache=yes
 
 - name: Install hhvm package
   apt: name=hhvm state=latest

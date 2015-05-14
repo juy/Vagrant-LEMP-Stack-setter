@@ -4,7 +4,7 @@ A development platform in a box, with everything you would need to develop PHP w
 
 **Current status:** Development, **Next:** Test, **Last:** Product
 
-> Used "chef/ubuntu-14.10" vagrant box *(virtualbox provider)* with ansible provision. Modified it for our own use, especially for Laravel projects. Tested only windows host.
+> Used "boxcutter/ubuntu1504" vagrant box *(virtualbox provider)* with ansible provision. Modified it for our own use, especially for Laravel projects. Tested only windows host.
 
 #### Help support this project
 If you'd like to support this and other our creations projects, donate via [PayPal][paypal-donate-url].
@@ -19,7 +19,7 @@ If you'd like to support this and other our creations projects, donate via [PayP
 Provision with ansible.
 
 - **Global**
-	- [x] Ubuntu 14.10 (utopic), x64 - [chef/ubuntu-14.10](https://atlas.hashicorp.com/chef/boxes/ubuntu-14.10)
+	- [x] Ubuntu 15.04 (vivid), x64 - [boxcutter/ubuntu1504](https://atlas.hashicorp.com/boxcutter/boxes/ubuntu1504)
 	- [x] Ansible 1.7.2
 	- [x] Nginx 1.8.0
 	- [x] PHP 5.6

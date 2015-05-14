@@ -7,11 +7,12 @@
 - name: Install ngxtop python package
   pip: name=ngxtop
 
-- name: Set the hostname
-  shell: hostname {{ hostname }}
+# FIXME: unable to resolve host juysetter
+#- name: Set the hostname
+#  shell: hostname {{ hostname }}
 
-- name: Set the hostname /etc/hostname
-  shell: echo {{ hostname }} > /etc/hostname
+#- name: Set the hostname /etc/hostname
+#  shell: echo {{ hostname }} > /etc/hostname
 
 - name: Set locales
   locale_gen: name={{ item }} state=present

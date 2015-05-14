@@ -1,4 +1,0 @@
-deb mirror://mirrors.ubuntu.com/mirrors.txt utopic main restricted universe multiverse
-deb mirror://mirrors.ubuntu.com/mirrors.txt utopic-updates main restricted universe multiverse
-deb mirror://mirrors.ubuntu.com/mirrors.txt utopic-backports main restricted universe multiverse
-deb mirror://mirrors.ubuntu.com/mirrors.txt utopic-security main restricted universe multiverse
