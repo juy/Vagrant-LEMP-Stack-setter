@@ -13,8 +13,9 @@
     - mytop
 
 # Configure MySQL Remote Access
+# TODO: Need test to remote connetc
 - name: Configure MySQL Remote Access
-  lineinfile: dest=/etc/mysql/my.cnf regexp="bind-address.*=.*" line="bind-address = 10.0.2.15"
+  lineinfile: dest=/etc/mysql/mysql.conf.d/mysqld.cnf regexp="bind-address.*=.*" line="bind-address = 10.0.2.15"
 - mysql_user: name=root host=10.0.2.2 priv=*.*:ALL,GRANT password={{ sql_root_password }}
 - mysql_user: name=homestead host=10.0.2.2 priv=*.*:ALL,GRANT password={{ sql_root_password }}
 - mysql_user: name=homestead host=% priv=*.*:ALL,GRANT password={{ sql_root_password }}
