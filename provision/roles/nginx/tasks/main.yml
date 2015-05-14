@@ -15,14 +15,12 @@
 - name: Copy fastcgi_params
   copy: src=fastcgi_params dest=/etc/nginx/fastcgi_params
 
-# TODO: "vagrant" change to {{ user }}, need check this
 - name: Set nginx user
   lineinfile: dest=/etc/nginx/nginx.conf regexp="{{ item.regex }}" line="{{ item.line }}"
   with_items:
     - {regex: "user .*;", line: "user {{ user }};"}
     - {regex: "server_names_hash_bucket_size.*", line: "server_names_hash_bucket_size 64;"}
 
-# TODO: hard codend server dir change to srv_dir, need check this
 - name: Configure some nginx host
   template: src={{ item }} dest=/etc/nginx/sites-available/{{ item|replace('.conf','') }}
   with_items:
