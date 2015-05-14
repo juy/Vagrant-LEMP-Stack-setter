@@ -1,10 +1,35 @@
 ---
-- name: Add node repository
-  apt_repository: repo='ppa:chris-lea/node.js' update_cache=yes
+# https://serversforhackers.com/an-ansible-tutorial
 
-- name: Install node
-  apt: name=nodejs state=latest
+- name: Ensure ubuntu distro is supported
+  get_url:
+    url='https://deb.nodesource.com/node/dists/utopic/Release'
+    dest=/dev/null
+  register: distrosupported
+
+- name: Add nodesource keys
+  apt_key:
+    url=https://deb.nodesource.com/gpgkey/nodesource.gpg.key
+    state=present
+  when: distrosupported|success
+
+- name: Add nodesource apt sources list deb
+  apt_repository:
+    repo='deb https://deb.nodesource.com/node utopic main'
+    state=present
+  when: distrosupported|success
+
+- name: Add nodesource apt sources list deb src
+  apt_repository:
+    repo='deb-src https://deb.nodesource.com/node utopic main'
+    state=present
+  when: distrosupported|success
+
+- name: Install NodeJS
+  apt: pkg=nodejs state=latest update_cache=true
+  when: distrosupported|success
 
 - name: Install node.js global packages
   npm: name={{ item }} global=yes state=latest
   with_items: node_packages
+  when: distrosupported|success
