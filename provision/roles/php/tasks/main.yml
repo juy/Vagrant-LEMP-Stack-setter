@@ -7,7 +7,6 @@
   with_items: php_packages
 
 - name: Make mcrypt available
-  #command: php5enmod mcrypt
   file: src=/etc/php5/mods-available/mcrypt.ini dest=/etc/php5/cli/conf.d/20-mcrypt.ini state=link force=yes
 
 # Install Mailparse PECL Extension

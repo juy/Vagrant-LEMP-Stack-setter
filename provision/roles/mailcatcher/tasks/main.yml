@@ -22,4 +22,3 @@
 
 - name: Run MailCatcher
   command: mailcatcher --ip=0.0.0.0
-  #shell: "mailcatcher --http-ip=0.0.0.0 || :"
