@@ -14,4 +14,4 @@
   sudo_user: "{{ user }}"
 
 - name: Change user for .composer dir
-  shell: chown -R vagrant:vagrant /home/vagrant/.composer
+  shell: chown -R {{ user }}:{{ user }} {{ home_dir }}/.composer
