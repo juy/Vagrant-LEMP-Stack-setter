@@ -4,7 +4,7 @@ A development platform in a box, with everything you would need to develop PHP w
 
 **Current status:** Development, **Next:** Test, **Last:** Product
 
-> Used "boxcutter/ubuntu1504" vagrant box *(virtualbox provider)* with ansible provision. Modified it for our own use, especially for Laravel projects. Tested only windows host.
+> Used "boxcutter/ubuntu1504" v1.1.0 vagrant box *(only virtualbox provider)* with ansible provision. Modified it for our own use, especially for Laravel projects. 
 
 #### Help support this project
 If you'd like to support this and other our creations projects, donate via [PayPal][paypal-donate-url].
@@ -19,7 +19,7 @@ If you'd like to support this and other our creations projects, donate via [PayP
 Provision with ansible.
 
 - **Global**
-	- [x] Ubuntu 15.04 (vivid), x64 - [boxcutter/ubuntu1504](https://atlas.hashicorp.com/boxcutter/boxes/ubuntu1504)
+	- [x] Ubuntu Server 15.04 Vivid Vervet (64-bit) - [boxcutter/ubuntu1504](https://atlas.hashicorp.com/boxcutter/boxes/ubuntu1504) v1.1.0
 	- [x] Ansible
 	- [x] Nginx
 	- [x] PHP
