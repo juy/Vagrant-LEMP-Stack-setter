@@ -3,7 +3,6 @@
   box_ipaddress: "192.168.13.13"
   box_memory: 2048
   box_cpu: 1
-  box_name: "juysetter"
   box_user: "vagrant"
   timezone: Europe/Istanbul
 
