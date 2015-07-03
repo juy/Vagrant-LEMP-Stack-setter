@@ -3,7 +3,10 @@
   box_ipaddress: "192.168.13.13"
   box_memory: 2048
   box_cpu: 1
-  box_user: "vagrant"
+
+# Default settings
+  ubuntu_name: "vivid"
+  default_user: "vagrant"
   timezone: Europe/Istanbul
 
 # MySQL, PostgreSQL root password. Same with Laravel Homestead.
