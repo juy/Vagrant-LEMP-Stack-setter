@@ -14,7 +14,6 @@ print_green 'Update Apt'
 apt-get update -qq
 apt-get upgrade -qq
 apt-get dist-upgrade -qq
-#do-release-upgrade -d
 composer -q self-update
 composer -q global update
 npm update -g
@@ -29,10 +28,6 @@ find /var/lib/apt -type f | xargs rm -f
 # Remove documentation files
 print_green 'Clean docs'
 find /var/lib/doc -type f | xargs rm -f
-
-# Remove Virtualbox specific files
-rm -rf /usr/src/vboxguest* /usr/src/virtualbox-ose-guest*
-rm -rf /opt/VBoxGuestAdditions*
 
 # Remove Linux headers
 rm -rf /usr/src/linux-headers*
@@ -93,4 +88,3 @@ rm -r /home/vagrant/.redis-commander
 history -c
 
 print_green 'Vagrant cleanup complete!'
-#shutdown -h now
