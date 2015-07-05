@@ -1,58 +1,48 @@
 <?php
 
+// Settings for SQL
+$username = 'root';
+$password = 'secret';
+$database = 'homestead';
+
+
 /**
  * MySQL
- * TODO: Use PDO ?
  */
-
-$mysqli = @new mysqli('localhost', 'root', 'secret');
 
 $mysql_running = false;
 $mysql_version = false;
 
-if (!mysqli_connect_errno())
-{
-	$mysql_running = true;
-	$mysql_version = $mysqli->server_info;
+try {
+    $dbh = new PDO('mysql:host=localhost;dbname='.$database, $username, $password);
+    $mysql_running = true;
+    $mysql_version = $dbh->query("SHOW VARIABLES LIKE '%version%'")->fetchObject()->Value; // 5.6.24
 }
-$mysqli->close();
+catch(PDOException $e) {
+    //echo $e->getMessage();
+}
 
 
 /**
  * PostgreSQL
  */
 
-// TODO: under construction
-//$dbconn = pg_connect('host=localhost port=5432 user=root password=secret');
-//$v = pg_version($dbconn);
-//echo $v['client'];
-
-//$pgsql = new PDO("pgsql:host=localhost;dbname=mydatabase");
-//$pgsql = new PDO('pgsql:host=localhost;dbname=test','root','secret');
-
-
-/**
- * Redis
- * https://github.com/phpredis/phpredis
- */
-
-$redis = new Redis();
-
-$redis_running = false;
-$redis_version = false;
+$pgsql_running = false;
+$pgsql_version = false;
 
 try {
-	$redis->connect('127.0.0.1', 6379);
+    $dbh = new PDO(
+        'pgsql:host=localhost;port=5432;dbname='.$database.';user='.$username.';password='.$password
+    );
 
-	if ($redis->ping() == '+PONG')
-	{
-		$redis_running = true;
-
-		$redis_info = $redis->info();
-		$redis_version = $redis_info['redis_version'];
-	}
-	$redis->close();
-} catch (RedisException $e) {}
+    $pgsql_running = true;
+    $result = $dbh->query("SELECT version()")->fetchObject()->version;
+    $pgsql_version_arr = explode(' ', $result);
+    $pgsql_version = $pgsql_version_arr[1];  // 9.4.4
+}
+catch(PDOException $e) {
+    //echo $e->getMessage();
+}
 
 
 /**
@@ -66,11 +56,47 @@ $memcached_version = false;
 
 if ($m->addServer('localhost', 11211))
 {
-	$memcached_running = true;
-	$memcached_version = $m->getVersion();
-	$memcached_version = current($memcached_version);
+    $memcached_running = true;
+    $memcached_version = $m->getVersion();
+    $memcached_version = current($memcached_version);
 }
 
+
+/**
+ * Redis
+ */
+
+$redis = new Redis();
+
+$redis_running = false;
+$redis_version = false;
+
+try {
+	$redis->connect('127.0.0.1', 6379);
+
+	if ($redis->ping() == '+PONG')
+	{
+		$redis_running = true;
+		$redis_info = $redis->info();
+        var_dump($redis_info);
+		$redis_version = $redis_info['redis_version'];
+        var_dump($redis_version);
+	}
+	$redis->close();
+}
+catch (RedisException $e) {
+    //echo $e->getMessage();
+    // Redis server went away
+}
+
+
+/**
+ * PHP
+ */
+
+$php_version = phpversion();
+$php_version = explode('-', $php_version);
+$php_version = $php_version[0];
 
 ?>
 <!doctype html>
@@ -108,50 +134,65 @@ if ($m->addServer('localhost', 11211))
 			<p class="lead">Here's some additional information you might need.</p>
 
 			<h3>Installed software</h3>
+
 			<table class="table table-striped table-condensed">
 				<tr>
 					<td>PHP Version</td>
-					<td><?php echo phpversion(); ?></td>
+					<td><?php echo $php_version; ?></td>
 				</tr>
 				<tr>
 					<td>MySQL running</td>
-					<td><i class="fa fa-<?php echo ($mysql_running ? 'check' : 'times'); ?>"></i></td>
+					<td>
+                        <i class="fa fa-<?php echo ($mysql_running ? 'check' : 'times'); ?>"></i>
+                        <?php echo ($mysql_running ? $mysql_version : ''); ?>
+                    </td>
 				</tr>
-				<tr>
-					<td>MySQL version</td>
-					<td><?php echo ($mysql_running ? $mysql_version : 'N/A'); ?></td>
-				</tr>
+                <tr>
+                    <td>PostgreSQL running</td>
+                    <td>
+                        <i class="fa fa-<?php echo ($pgsql_running ? 'check' : 'times'); ?>"></i>
+                        <?php echo ($pgsql_running ? $pgsql_version : ''); ?>
+                    </td>
+                </tr>
 				<tr>
 					<td>Memcached running</td>
-					<td><i class="fa fa-<?php echo ($memcached_running ? 'check' : 'times'); ?>"></i></td>
-				</tr>
-				<tr>
-					<td>Memcached version</td>
-					<td><?php echo ($memcached_version ? $memcached_version : 'N/A'); ?></td>
+					<td>
+                        <i class="fa fa-<?php echo ($memcached_running ? 'check' : 'times'); ?>"></i>
+                        <?php echo ($memcached_version ? $memcached_version : ''); ?>
+                    </td>
 				</tr>
 				<tr>
 					<td>Redis running</td>
-					<td><i class="fa fa-<?php echo ($redis_running ? 'check' : 'times'); ?>"></i></td>
-				</tr>
-				<tr>
-					<td>Redis version</td>
-					<td><?php echo ($redis_version ? $redis_version : 'N/A'); ?></td>
+					<td>
+                        <i class="fa fa-<?php echo ($redis_running ? 'check' : 'times'); ?>"></i>
+                        <?php echo ($redis_version ? $redis_version : ''); ?>
+                    </td>
 				</tr>
 			</table>
 
 			<h3>PHP Modules</h3>
-			<table class="table table-striped table-condensed">
-				<tr>
-					<td>MySQL</td>
-					<td><i class="fa fa-<?php echo (class_exists('mysqli') ? 'check' : 'times'); ?>"></i></td>
-				</tr>
+
+            <table class="table table-striped table-condensed">
+                <tr>
+                    <td><strong>OpenSSL</strong></td>
+                    <td><i class="fa fa-<?php echo (extension_loaded('openssl') ? 'check' : 'times'); ?>"></i></td>
+                </tr>
+                <tr>
+                    <td><strong>PDO</strong></td>
+                    <td><i class="fa fa-<?php echo (extension_loaded('PDO') ? 'check' : 'times'); ?>"></i></td>
+                </tr>
+                <tr>
+                    <td><strong>mbstring</strong></td>
+                    <td><i class="fa fa-<?php echo (extension_loaded('mbstring') ? 'check' : 'times'); ?>"></i></td>
+                </tr>
+                <tr>
+                    <td><strong>tokenizer</strong></td>
+                    <td><i class="fa fa-<?php echo (extension_loaded('tokenizer') ? 'check' : 'times'); ?>"></i></td>
+                </tr>
+
 				<tr>
 					<td>CURL</td>
-					<td><i class="fa fa-<?php echo (function_exists('curl_init') ? 'check' : 'times'); ?>"></i></td>
-				</tr>
-				<tr>
-					<td>mcrypt</td>
-					<td><i class="fa fa-<?php echo (function_exists('mcrypt_encrypt') ? 'check' : 'times'); ?>"></i></td>
+					<td><i class="fa fa-<?php echo (extension_loaded('curl') ? 'check' : 'times'); ?>"></i></td>
 				</tr>
 				<tr>
 					<td>gd</td>
@@ -175,10 +216,32 @@ if ($m->addServer('localhost', 11211))
 				</tr>
 				<tr>
 					<td colspan="2">
-						<em>Note: External access is enabled! Just use <strong><?php echo $_SERVER['SERVER_ADDR'] ?></strong> as host.</em>
+						<em>Note: External access is enabled! Just use <strong>127.0.0.1:33060</strong> as host.</em>
 					</td>
 				</tr>
 			</table>
+
+            <h3>PostgreSQL credentials</h3>
+            <table class="table table-striped table-condensed">
+                <tr>
+                    <td>Hostname</td>
+                    <td>localhost</td>
+                </tr>
+                <tr>
+                    <td>Username</td>
+                    <td>root</td>
+                </tr>
+                <tr>
+                    <td>Password</td>
+                    <td>secret</td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <em>Note: External access is enabled! Just use <strong>127.0.0.1:54320</strong> as host.</em>
+                    </td>
+                </tr>
+            </table>
+
 
 		</div>
 		<div id="push"></div>
