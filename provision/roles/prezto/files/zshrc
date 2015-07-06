@@ -52,8 +52,8 @@ alias lsf='ls -l *(-^/)'  # list regular files only
 alias lsfa='ls -l *(D-.)' # list regular and hidden files
 
 # cd
-alias ..="cd .."
-alias ...="cd ../.."
+alias ..='cd ..'
+alias ...='cd ../..'
 alias cd..='cd ..'
 alias h='cd ~'
 
@@ -62,7 +62,7 @@ alias art='php artisan'
 alias artisan='php artisan'
 
 # Composer
-alias composer="hhvm -v ResourceLimit.SocketDefaultTimeout=30 -v Http.SlowQueryThreshold=30000 -v Eval.Jit=false /usr/local/bin/composer"
+alias composer='hhvm -v ResourceLimit.SocketDefaultTimeout=30 -v Http.SlowQueryThreshold=30000 -v Eval.Jit=false /usr/local/bin/composer'
 alias autoload='composer dump-autoload'
 
 # npm
@@ -72,15 +72,15 @@ alias npm='npm --no-bin-links'
 # show screen job with 'screen -ls'
 # reattach screenn with: 'screen -r [pid/name]'
 # detach screen with: 'ctrl + a,d'
-alias screenbg="screen -dmS"
+alias screenbg='screen -dmS'
 
 # Grep
 alias grep='grep --color=auto -in'
-alias grepd="grep -rn" # search string in directory
+alias grepd='grep -rn' # search string in directory
 
 # Tar
-alias tarx="tar -xzvf" # extract tar
-alias tarc="tar -czvf" # compress tar
+alias tarx='tar -xzvf' # extract tar
+alias tarc='tar -czvf' # compress tar
 
 # Other
 alias cl='clear'
@@ -98,17 +98,17 @@ alias mv='mv -iv'
 # ---------------------------------------------------------------
 
 # ignore changes on tracked file
-alias ignore="git update-index --assume-unchanged"
+alias ignore='git update-index --assume-unchanged'
 # track changes
-alias unignore="git update-index --no-assume-unchanged"
+alias unignore='git update-index --no-assume-unchanged'
 # list tracked files with changes ignored
 alias ignored="git ls-files -v | grep '^[[:lower:]]'"
 # pull
-#alias gpl="git pull"
+#alias gpl='git pull'
 # pushhphonnee
-#alias gps="git push"
+#alias gps='git push'
 # add
-#alias ga="git add"
+#alias ga='git add'
 
 # git commit + add
 #function gcoma(){
@@ -119,7 +119,7 @@ alias ignored="git ls-files -v | grep '^[[:lower:]]'"
 #}
 
 # git status
-#alias gst="git status"
+#alias gst='git status'
 
 # git archive export
 #function gexport(){
