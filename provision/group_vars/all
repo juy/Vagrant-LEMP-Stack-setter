@@ -1,5 +1,5 @@
 ---
-config_file: "../config.yml"
+config_file: "../vagrant_config.yml"
 ubuntu_name: "{{ ubuntu_name }}"
 user: "{{ default_user }}"
 home_dir: "/home/{{ user }}"
