@@ -41,7 +41,6 @@ Provision with ansible.
 	- [x] node.js
 	- [x] bower
 	- [x] gulp
-	- [x] grunt
 - **Composer global packages**
 	- [x] Laravel Installer
 	- [x] Laravel Envoy
