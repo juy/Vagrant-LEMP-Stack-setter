@@ -7,7 +7,7 @@ Vagrant.require_version ">= 1.5"
 
 # Include config from config file
 require 'yaml'
-$config_file = "vagrant_config.yml"
+$config_file = "vagrant/vagrant_config.yml"
 $config = YAML::load_file($config_file)
 
 # Vagrant configure
@@ -53,7 +53,7 @@ Vagrant.configure(2) do |config|
   end
 
   # Shared folder
-  config.vm.synced_folder "./", "/vagrant", type: "nfs"
+  config.vm.synced_folder "./vagrant", "/vagrant", type: "nfs"
 
   # Virtualbox settings
   #config.vm.provider :virtualbox do |vb|
@@ -95,13 +95,13 @@ Vagrant.configure(2) do |config|
   if $config['ansible_provision']
     if Vagrant::Util::Platform.windows?
       config.vm.provision "shell" do |s|
-        s.path = "./provision/provision.sh"
+        s.path = "./vagrant/provision/provision.sh"
         s.args = [$config['box_ipaddress'], ($config['ansible_verbose']) ? "y" : "n"]
       end
     else
       config.vm.provision :ansible do |ansible|
-        ansible.playbook = "provision/playbook.yml"
-        ansible.inventory_path = "provision/inventories/dev"
+        ansible.playbook = "vagrant/provision/playbook.yml"
+        ansible.inventory_path = "vagrant/provision/inventories/dev"
         ansible.limit = "all"
         if $config['ansible_verbose']
           ansible.verbose = "vv"
