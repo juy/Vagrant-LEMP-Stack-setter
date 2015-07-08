@@ -29,7 +29,12 @@
   apt: pkg=nodejs state=latest update_cache=true
   when: distrosupported|success
 
+- name: Create npm-packages directory
+  file: path='{{ home_dir }}/.npm-packages' state=directory owner={{ user }} group={{ user }}
+  when: distrosupported|success
+
 - name: Install node.js global packages
   npm: name={{ item }} global=yes state=latest
   with_items: node_packages
+  sudo_user: "{{ user }}"
   when: distrosupported|success

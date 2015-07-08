@@ -33,6 +33,9 @@ if [ -d "$HOME/.composer/vendor/bin" ] ; then
   PATH="$HOME/.composer/vendor/bin:$PATH"
 fi
 
+# npm global packages paths
+NPM_PACKAGES="${HOME}/.npm-packages"
+NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
 
 # ---------------------------------------------------------------
 # Aliases
