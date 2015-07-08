@@ -1,25 +1,31 @@
 ---
 - name: Add nginx repository
   apt_repository: repo='ppa:nginx/stable' update_cache=yes
+  register: ppastable
 
 - name: Install nginx
   apt: name=nginx state=installed
+  when: ppastable|success
+  register: nginxinstalled
 
 - name: Remove default vhost
   file: dest={{ item }} state=absent
   with_items:
     - "/etc/nginx/sites-enabled/default"
     - "/etc/nginx/sites-available/default"
+  when: nginxinstalled|success
 
 # Copy fastcgi_params to Nginx because they broke it on the PPA
 - name: Copy fastcgi_params
   copy: src=fastcgi_params dest=/etc/nginx/fastcgi_params
+  when: nginxinstalled|success
 
 - name: Set nginx user
   lineinfile: dest=/etc/nginx/nginx.conf regexp="{{ item.regex }}" line="{{ item.line }}"
   with_items:
     - {regex: "user .*;", line: "user {{ user }};"}
     - {regex: "server_names_hash_bucket_size.*", line: "server_names_hash_bucket_size 64;"}
+  when: nginxinstalled|success
 
 - name: Configure some nginx host
   template: src={{ item }} dest=/etc/nginx/sites-available/{{ item|replace('.conf','') }}
@@ -27,6 +33,7 @@
     - index.conf
     - wildcard-laravel.conf
     - wildcard-site.conf
+  when: nginxinstalled|success
 
 - name: Enable nginx hosts
   file: src=/etc/nginx/sites-available/{{ item }} dest=/etc/nginx/sites-enabled/{{ item }} state=link
@@ -34,6 +41,7 @@
     - index
     - wildcard-laravel
     - wildcard-site
+  when: nginxinstalled|success
   notify: restart nginx
 
 - name: Create srv and www directory
@@ -42,9 +50,11 @@
     - "{{ srv_dir }}"
     - "{{ srv_dir }}/index"
     - "{{ www_dir }}"
+  when: nginxinstalled|success
 
 - name: Copy default index and phpinfo file into index directory
   copy: src={{ item }} dest={{ srv_dir }}/index/{{ item }} owner={{ user }} group={{ user }} mode=640
   with_items:
     - index.php
     - phpinfo.php
+  when: nginxinstalled|success
