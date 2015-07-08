@@ -6,7 +6,6 @@
   default_name: "vagrantlemp"
 
 # Default settings
-  ubuntu_name: "vivid"
   default_user: "vagrant"
   timezone: Europe/Istanbul
 

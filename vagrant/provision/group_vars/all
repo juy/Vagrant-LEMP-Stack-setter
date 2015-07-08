@@ -1,6 +1,6 @@
 ---
 config_file: "../config.yml"
-ubuntu_name: "{{ ubuntu_name }}"
+ubuntu_name: "vivid"
 user: "{{ default_user }}"
 home_dir: "/home/{{ user }}"
 srv_dir: "/home/{{ user }}/srv"
