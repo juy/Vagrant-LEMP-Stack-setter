@@ -40,8 +40,8 @@
   file: path={{ item }} state=directory owner={{ user }} group={{ user }}
   with_items:
     - "{{ srv_dir }}"
-    - "{{ srv_dir }}/www"
     - "{{ srv_dir }}/index"
+    - "{{ www_dir }}"
 
 - name: Copy default index and phpinfo file into index directory
   copy: src={{ item }} dest={{ srv_dir }}/index/{{ item }} owner={{ user }} group={{ user }} mode=640
