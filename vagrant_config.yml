@@ -14,7 +14,7 @@
   use_cachier: true
 
 # Ansible pre settings
-  ansible_provision: false
+  ansible_provision: true
   ansible_verbose: false
 
 # MySQL, PostgreSQL root password. Same with Laravel Homestead.
