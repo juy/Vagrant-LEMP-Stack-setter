@@ -3,18 +3,22 @@
   box_ipaddress: "192.168.13.13"
   box_memory: 2048
   box_cpu: 1
+  default_name: "vagrantlemp"
 
 # Default settings
   ubuntu_name: "vivid"
   default_user: "vagrant"
   timezone: Europe/Istanbul
 
-# MySQL, PostgreSQL root password. Same with Laravel Homestead.
-  sql_root_password: "secret"
+  # Use vagrant cachier plugin
+  use_cachier: true
 
 # Ansible pre settings
-  ansible_provision: true
+  ansible_provision: false
   ansible_verbose: false
+
+# MySQL, PostgreSQL root password. Same with Laravel Homestead.
+  sql_root_password: "secret"
 
 # Install components:
 # - To install a component set it to true.

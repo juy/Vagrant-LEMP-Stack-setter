@@ -3,9 +3,11 @@
 # See the readme file (README.md) for more information.
 # Contribute to this project at : https://github.com/juy/Vagrant-LEMP-Stack-setter
 
+Vagrant.require_version ">= 1.5"
+
 # Include config from config file
-$config_file = "vagrant_config.yml"
 require 'yaml'
+$config_file = "vagrant_config.yml"
 $config = YAML::load_file($config_file)
 
 # Vagrant configure
@@ -15,6 +17,10 @@ Vagrant.configure(2) do |config|
   config.vm.box = "boxcutter/ubuntu1504" # hostname is vagrant
   config.vm.box_check_update = false
   config.vm.boot_timeout = 60
+
+  # Vagrant default name
+  config.vm.define "#{$config['default_name']}" do |t|
+  end
 
   # https://github.com/dotless-de/vagrant-vbguest
   config.vbguest.auto_update = false
@@ -27,33 +33,50 @@ Vagrant.configure(2) do |config|
 
   # Private network IP
   config.vm.network :private_network, ip: $config['box_ipaddress']
+  #config.ssh.forward_agent = true
 
   # Allow caching to be used
   # http://fgrehm.viewdocs.io/vagrant-cachier/usage
-  if Vagrant.has_plugin?("vagrant-cachier")
-    config.cache.scope = :box
-    config.cache.auto_detect = false
-    config.cache.enable :apt
-    #config.cache.enable :npm  # Make problems
-    config.cache.enable :composer
-    config.cache.enable :bower
-    config.cache.enable :gem
-    #config.cache.enable :generic, { "wget" => { cache_dir: "/var/cache/wget" } }
-    #config.cache.synced_folder_opts = { type: :nfs }
-    #config.cache.synced_folder_opts = { type: :nfs, mount_options: ['rw', 'vers=3', 'tcp', 'nolock'] }
+  if $config['use_cachier']
+    if Vagrant.has_plugin?("vagrant-cachier")
+      config.cache.scope = :box
+      config.cache.auto_detect = false
+      config.cache.enable :apt
+      #config.cache.enable :npm  # Make problems
+      config.cache.enable :composer
+      config.cache.enable :bower
+      config.cache.enable :gem
+      #config.cache.enable :generic, { "wget" => { cache_dir: "/var/cache/wget" } }
+      #config.cache.synced_folder_opts = { type: :nfs }
+      #config.cache.synced_folder_opts = { type: :nfs, mount_options: ['rw', 'vers=3', 'tcp', 'nolock'] }
+    end
   end
 
   # Shared folder
   config.vm.synced_folder "./", "/vagrant", type: "nfs"
 
   # Virtualbox settings
-  config.vm.provider :virtualbox do |vb|
-    vb.customize ["modifyvm", :id, "--memory", $config['box_memory']]
-    vb.customize ["modifyvm", :id, "--cpus", $config['box_cpu']]
-    vb.customize ["modifyvm", :id, "--natdnsproxy1", "on"]
-    vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
-    vb.customize ["modifyvm", :id, "--nestedpaging", "off"]
-    vb.customize ["modifyvm", :id, "--ostype", "Ubuntu_64"]
+  #config.vm.provider :virtualbox do |vb|
+  #  vb.customize ["modifyvm", :id, "--memory", $config['box_memory']]
+  #  vb.customize ["modifyvm", :id, "--cpus", $config['box_cpu']]
+  #  vb.customize ["modifyvm", :id, "--natdnsproxy1", "on"]
+  #  vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+  #  vb.customize ["modifyvm", :id, "--nestedpaging", "off"]
+  #  vb.customize ["modifyvm", :id, "--ostype", "Ubuntu_64"]
+  #end
+
+  config.vm.provider :virtualbox do |v|
+      v.name = $config['default_name']
+      v.customize [
+          "modifyvm", :id,
+          "--name", $config['default_name'],
+          "--memory", $config['box_memory'],
+          "--cpus", $config['box_cpu'],
+          "--natdnshostresolver1", "on",
+          "--natdnsproxy1", "on",
+          "--nestedpaging", "off",
+          "--ostype", "Ubuntu_64"
+      ]
   end
 
   # Port forwarding
@@ -69,18 +92,18 @@ Vagrant.configure(2) do |config|
   config.vm.network :forwarded_port, guest: 1080,  host: 10800, auto_correct: true  # MailCatcher
 
   # Ansible provisioning
-  if $config['ansible_provision'] == true
+  if $config['ansible_provision']
     if Vagrant::Util::Platform.windows?
       config.vm.provision "shell" do |s|
         s.path = "./provision/provision.sh"
-        s.args = [$config['box_ipaddress'], ($config['ansible_verbose'] == true) ? "y" : "n"]
+        s.args = [$config['box_ipaddress'], ($config['ansible_verbose']) ? "y" : "n"]
       end
     else
       config.vm.provision :ansible do |ansible|
         ansible.playbook = "provision/playbook.yml"
         ansible.inventory_path = "provision/inventories/dev"
         ansible.limit = "all"
-        if $config['ansible_verbose'] == true
+        if $config['ansible_verbose']
           ansible.verbose = "vv"
         end
       end
