@@ -14,7 +14,7 @@ $config = YAML::load_file($config_file)
 Vagrant.configure(2) do |config|
 
   # Configure the box
-  config.vm.box = "boxcutter/ubuntu1504"
+  config.vm.box = "boxcutter/ubuntu1504" # https://atlas.hashicorp.com/boxcutter/boxes/ubuntu1504
   config.vm.box_check_update = false
   config.vm.boot_timeout = 60
 
