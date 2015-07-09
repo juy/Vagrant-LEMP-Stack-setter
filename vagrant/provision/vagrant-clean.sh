@@ -16,7 +16,7 @@ apt-get upgrade -qq
 apt-get dist-upgrade -qq
 composer -q self-update
 composer -q global update
-npm update -g
+#npm update -g # no use sudo anymore
 
 # Remove APT cache and files
 print_green 'Clean Apt'
@@ -80,9 +80,6 @@ rm -f /root/.bash_history
 rm -f /home/vagrant/.bash_history
 rm -f /home/vagrant/.nano_history
 rm -f /home/vagrant/.zhistory
-rm -r /home/vagrant/.landscape
-rm -r /home/vagrant/.cache
-rm -r /home/vagrant/.zcompdump*
 rm -r /home/vagrant/.sudo_as_admin_successful
 rm -r /home/vagrant/.redis-commander
 history -c
