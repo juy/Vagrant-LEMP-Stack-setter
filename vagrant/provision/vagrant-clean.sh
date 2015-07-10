@@ -9,14 +9,15 @@ print_green(){
 }
 
 
-# Update Apt
-print_green 'Update Apt'
-apt-get update -qq
-apt-get upgrade -qq
-apt-get dist-upgrade -qq
-composer -q self-update
-composer -q global update
-#npm update -g # no use sudo anymore
+# Update Apt: Need manual update
+#print_green 'Update Apt'
+#apt-get update -qq
+#apt-get upgrade -qq
+#apt-get dist-upgrade -qq
+#composer -q self-update
+##composer -q global update
+##npm update -g # no use sudo anymore
+#su vagrant -c npm update -g # Need test
 
 # Remove APT cache and files
 print_green 'Clean Apt'
