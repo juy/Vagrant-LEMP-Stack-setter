@@ -16,7 +16,7 @@
     - node
     - hhvm
     - { role: beanstalkd, when: "beanstalkd_install" }
-    - redis
+    #- redis
     - supervisor
     - php
     - composer
