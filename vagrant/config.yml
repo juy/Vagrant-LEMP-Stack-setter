@@ -57,6 +57,17 @@ blackfire:
 ngrok:
   install: false
   port: 8000
+  #subdomain: lempapp
+  #httpauth: 'user:password'
+  #proto: 'tcp 22'
+  #client: 'client1 client2 client3'
+  #hostname: 'your.domain.com'
+  #tunnels:
+  #  client:
+  #    httpauth: 'user:password'
+  #    proto: 'https 8080'
+  #  ssh:
+  #    proto: 'tcp: 22'
 
 # Applications
 applications:
