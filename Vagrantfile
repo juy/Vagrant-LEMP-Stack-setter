@@ -16,15 +16,6 @@ require 'yaml'
 $config_file = "vagrant/config.yml"
 $config = YAML::load_file($config_file)
 
-# Check vagrant version
-if Vagrant::VERSION < "6.0.0"
-  puts $config['box']['ip']
-  puts $config['box']['memory']
-  puts $config['box']['cpu']
-  puts
-  exit
-end
-
 # Vagrant configure
 Vagrant.configure(2) do |config|
 
