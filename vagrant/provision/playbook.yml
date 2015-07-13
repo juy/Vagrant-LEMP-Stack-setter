@@ -8,28 +8,28 @@
       with_items: config_file
   roles:
     #- { role: test, tags: ["test"], when: "test_install" }
-    - sources
-    - common
-    - git
-    - prezto
-    - dotfiles
-    - node
-    - hhvm
-    - { role: beanstalkd, when: "beanstalkd_install" }
-    #- redis
-    - supervisor
-    - php
-    - composer
-    - nginx
+    #- sources
+    #- common
+    #- git
+    #- prezto
+    #- dotfiles
+    #- node
+    #- hhvm
+    #- { role: beanstalkd, when: "beanstalkd_install" }
+    - { role: redis, when: "redis_install" }
+    #- supervisor
+    #- php
+    #- composer
+    #- nginx
     #
-    - { role: mysql, when: "mysql_install" }
-    - { role: postgresql, when: "pgsql_install" }
+    #- { role: mysql, when: "mysql_install" }
+    #- { role: postgresql, when: "pgsql_install" }
     #
-    - { role: blackfire, when: "blackfire_install" }
-    - { role: mailcatcher, when: "mailcatcher_install" }
+    #- { role: blackfire, when: "blackfire_install" }
+    #- { role: mailcatcher, when: "mailcatcher_install" }
     #
-    - tool_base
-    - { role: tool_beanstalkd-console, when: "beanstalkd_console_install" }
-    - { role: tool_redis-commander, when: "redis_commander_install" }
+    #- tool_base
+    #- { role: tool_beanstalkd-console, when: "beanstalkd_console_install" }
+    #- { role: tool_redis-commander, when: "redis_commander_install" }
     #
-    - finalize
+    #- finalize
