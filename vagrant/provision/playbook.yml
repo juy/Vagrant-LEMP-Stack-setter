@@ -8,30 +8,30 @@
       include_vars: "{{ item }}"
       with_items: config_file
   roles:
-    - { role: test, tags: ["test"], when: "test.install" }
+    #- { role: test, tags: ["test"], when: "test.install" }
     - sources
     - common
-    - git
-    - prezto
-    - dotfiles
-    - node
-    - hhvm
-    - { role: beanstalkd, when: "beanstalkd.install" }
-    - supervisor
+    #- git
+    #- prezto
+    #- dotfiles
+    #- node
+    #- hhvm
+    #- { role: beanstalkd, when: "beanstalkd.install" }
+    #- supervisor
     - php
     - composer
-    - nginx
+    #- nginx
     #
-    - { role: mysql, when: "mysql.install" }
-    - { role: postgresql, when: "pgsql.install" }
-    - { role: redis, when: "redis.install" }
+    #- { role: mysql, when: "mysql.install" }
+    #- { role: postgresql, when: "pgsql.install" }
+    #- { role: redis, when: "redis.install" }
     #
-    - { role: blackfire, when: "blackfire.install" }
-    - { role: mailcatcher, when: "mailcatcher.install" }
-    - { role: ngrok, when: "ngrok.install" }
+    #- { role: blackfire, when: "blackfire.install" }
+    #- { role: mailcatcher, when: "mailcatcher.install" }
+    #- { role: ngrok, when: "ngrok.install" }
     #
-    - { role: app_base, when: "applications.install" }
-    - { role: app_beanstalkd-console, when: "applications.beanstalkd_console.install" }
-    - { role: app_redis-commander, when: "applications.redis_commander.install" }
+    #- { role: app_base, when: "applications.install" }
+    #- { role: app_beanstalkd-console, when: "applications.beanstalkd_console.install" }
+    #- { role: app_redis-commander, when: "applications.redis_commander.install" }
     #
-    - finalize
+    #- finalize

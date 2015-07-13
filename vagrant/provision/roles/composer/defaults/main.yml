@@ -1,5 +1,0 @@
----
-composer_global_packages:
-  laravel/installer: "~1.2"
-  laravel/lumen-installer: "~1.0"
-  laravel/envoy: "~1.0"

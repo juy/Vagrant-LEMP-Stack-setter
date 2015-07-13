@@ -12,6 +12,7 @@
   shell: composer global require {{ item.key }}:{{ item.value }} --no-progress
   with_dict: composer_global_packages
   sudo_user: "{{ user }}"
+  when: composer_global_packages|length > 0
 
 - name: Change user for .composer dir
   shell: chown -R {{ user }}:{{ user }} {{ home_dir }}/.composer
