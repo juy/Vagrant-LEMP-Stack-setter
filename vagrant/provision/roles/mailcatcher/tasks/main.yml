@@ -11,6 +11,7 @@
 
 - name: Configure PHP Email
   lineinfile: dest=/etc/php5/cli/conf.d/00-php.ini line="sendmail_path = /usr/bin/env catchmail"
+  when: mailcatcher_sendmail_replace
   notify: restart php5-fpm
 
 - name: Kill MailCatcher

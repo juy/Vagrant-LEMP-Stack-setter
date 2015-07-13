@@ -20,11 +20,13 @@
     - supervisor
     - php
     - composer
-    - mailcatcher
     - nginx
+    #
     - { role: mysql, when: "mysql_install" }
     - { role: postgresql, when: "pgsql_install" }
+    #
     - { role: blackfire, when: "blackfire_install" }
+    - { role: mailcatcher, when: "mailcatcher_install" }
     #
     - tool_base
     - { role: tool_beanstalkd-console, when: "beanstalkd_console_install" }

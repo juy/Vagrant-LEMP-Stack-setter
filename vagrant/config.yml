@@ -18,12 +18,20 @@
 # MySQL, PostgreSQL root password. Same with Laravel Homestead.
   sql_root_password: "secret"
 
+
 # Install components:
 # - To install a component set it to true.
 # - To leave a component out of the install set the value to false.
+
+  # SQL
   mysql_install: true
   pgsql_install: true
+
   blackfire_install: true
+
+  mailcatcher_install: true
+  mailcatcher_sendmail_replace: true # Replace php sendmail path for mailcatcher
+
   # Tools
   beanstalkd_console_install: true
   redis_commander_install: true
