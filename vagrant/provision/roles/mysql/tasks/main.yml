@@ -21,7 +21,7 @@
   notify: restart mysql
 
 - name: Create a new database
-  mysql_db: name=homestead collation=utf8_general_ci
+  mysql_db: name={{ mysql.database }} collation=utf8_general_ci
 
 #- name: Create a database user
 #  mysql_user: name=root password=secret priv=*.*:ALL host=localhost

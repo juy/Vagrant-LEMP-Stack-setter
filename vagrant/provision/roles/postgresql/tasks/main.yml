@@ -18,16 +18,17 @@
   sudo_user: postgres
   notify: restart postgresql
 
+# TODO: This moved to common task
 # Fix bad syntax in sudoers
 # ref: https://github.com/mitchellh/vagrant/issues/892
 # ref: https://github.com/opscode/bento/pull/201
-- name: Fix bad syntax in sudoers
-  lineinfile: dest=/etc/sudoers regexp="%sudo\s*ALL=.*NOPASSWD:ALL" line="%sudo ALL=(ALL) NOPASSWD:ALL"
+#- name: Fix bad syntax in sudoers
+#  lineinfile: dest=/etc/sudoers regexp="%sudo\s*ALL=.*NOPASSWD:ALL" line="%sudo ALL=(ALL) NOPASSWD:ALL"
 
 - name: Create user
   postgresql_user: name=root role_attr_flags=SUPERUSER,INHERIT,NOCREATEDB,NOCREATEROLE,NOREPLICATION password="{{ pgsql.root_password }}"
   sudo_user: postgres
 
 - name: Create a new database
-  postgresql_db: name=homestead owner=root
+  postgresql_db: name={{ mpgsql.root_password }} owner=root
   sudo_user: postgres
