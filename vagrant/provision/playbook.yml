@@ -1,5 +1,6 @@
 ---
-- hosts: all
+- name: "Vagrant LEMP Stack"
+  hosts: all
   sudo: yes
   gather_facts: no
   pre_tasks:
