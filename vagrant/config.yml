@@ -26,9 +26,11 @@ ansible:
 mysql:
   install: true
   root_password: "secret"
+  database: "homestead"
 pgsql:
   install: true
   root_password: "secret"
+  database: "homestead"
 
 # NoSQL
 redis:
@@ -38,6 +40,11 @@ composer_global_packages:
   laravel/installer: "~1.2"
   laravel/lumen-installer: "~1.0"
   laravel/envoy: "~1.0"
+
+node_global_packages:
+  - bower
+  - gulp
+  - laravel-elixir
 
 # Tools
 mailcatcher:
@@ -49,6 +56,7 @@ blackfire:
   install: true
 ngrok:
   install: false
+  port: 8000
 
 # Applications
 applications:
