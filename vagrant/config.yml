@@ -3,6 +3,7 @@ box:
   ip: "192.168.13.13"
   memory: 2048
   cpu: 1
+user: "vagrant"
 
 # Default vagrant box name
 default_name: "vagrantlemp"
