@@ -1,5 +1,5 @@
 ---
-php_packages:
+php_modules:
   - php5-common
   - php5-cli
   - php5-dev
