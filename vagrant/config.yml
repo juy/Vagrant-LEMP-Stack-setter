@@ -13,7 +13,7 @@
 
 # Ansible provision settings
   ansible_provision: true
-  ansible_verbose: true
+  ansible_verbose: false
 
 # MySQL, PostgreSQL root password. Same with Laravel Homestead.
   sql_root_password: "secret"
