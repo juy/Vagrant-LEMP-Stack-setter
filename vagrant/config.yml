@@ -27,6 +27,9 @@
   mysql_install: true
   pgsql_install: true
 
+  # NoSQL
+  redis_install: true
+
   # Mailcatcher
   mailcatcher_install: true
   mailcatcher_sendmail_replace: true # Replace php sendmail path for mailcatcher
