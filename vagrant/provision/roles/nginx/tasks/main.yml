@@ -4,7 +4,7 @@
   register: ppastable
 
 - name: Install nginx
-  apt: name=nginx state=installed
+  apt: name=nginx state=latest force=yes
   when: ppastable|success
   register: nginxinstalled
 
