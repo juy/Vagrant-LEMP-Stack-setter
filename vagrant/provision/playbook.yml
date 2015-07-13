@@ -15,7 +15,7 @@
     - dotfiles
     - node
     - hhvm
-    - beanstalkd
+    - { role: beanstalkd, when: "beanstalkd_install" }
     - redis
     - supervisor
     - php

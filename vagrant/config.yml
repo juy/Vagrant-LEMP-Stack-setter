@@ -27,10 +27,12 @@
   mysql_install: true
   pgsql_install: true
 
-  blackfire_install: true
-
+  # Mailcatcher
   mailcatcher_install: true
   mailcatcher_sendmail_replace: true # Replace php sendmail path for mailcatcher
+
+  beanstalkd_install: true
+  blackfire_install: true
 
   # Tools
   beanstalkd_console_install: true
