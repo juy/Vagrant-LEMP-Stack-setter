@@ -78,9 +78,7 @@ try {
 	{
 		$redis_running = true;
 		$redis_info = $redis->info();
-        var_dump($redis_info);
 		$redis_version = $redis_info['redis_version'];
-        var_dump($redis_version);
 	}
 	$redis->close();
 }
