@@ -34,6 +34,7 @@ pgsql:
 redis:
   install: true
 
+# Tools
 mailcatcher:
   install: true
   sendmail_replace: true # Replace php sendmail path for mailcatcher
@@ -44,8 +45,8 @@ blackfire:
 ngrok:
   install: false
 
-# Tools
-tools:
+# Applications
+applications:
   install: true
   beanstalkd_console:
     install: true
