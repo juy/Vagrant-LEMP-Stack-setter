@@ -1,5 +1,0 @@
----
-node_packages:
-  - bower
-  - gulp
-  - laravel-elixir

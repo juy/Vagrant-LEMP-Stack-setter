@@ -19,7 +19,7 @@
     state=present
   when: distrosupported|success
 
-- name: Add nodesource apt sources list deb src
+- name: Add node source apt sources list deb src
   apt_repository:
     repo='deb-src https://deb.nodesource.com/node {{ ubuntu_name }} main'
     state=present
@@ -33,8 +33,13 @@
   file: path='{{ home_dir }}/.npm-packages' state=directory owner={{ user }} group={{ user }}
   when: distrosupported|success
 
+- name: Copy .npmrc
+  copy: src={{ item }} dest={{ home_dir }}/{{ item }} owner={{ user }} group={{ user }} mode=640
+  with_items:
+    - .npmrc
+
 - name: Install node.js global packages
   npm: name={{ item }} global=yes state=latest
-  with_items: node_packages
+  with_items: node_global_packages
   sudo_user: "{{ user }}"
   when: distrosupported|success
