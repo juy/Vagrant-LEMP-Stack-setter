@@ -7,29 +7,30 @@
       include_vars: "{{ item }}"
       with_items: config_file
   roles:
-    #- { role: test, tags: ["test"], when: "test_install" }
-    #- sources
-    #- common
-    #- git
-    #- prezto
-    #- dotfiles
-    #- node
-    #- hhvm
-    #- { role: beanstalkd, when: "beanstalkd_install" }
-    - { role: redis, when: "redis_install" }
-    #- supervisor
-    #- php
-    #- composer
-    #- nginx
+    - { role: test, tags: ["test"], when: "test.install" }
+    - sources
+    - common
+    - git
+    - prezto
+    - dotfiles
+    - node
+    - hhvm
+    - { role: beanstalkd, when: "beanstalkd.install" }
+    - supervisor
+    - php
+    - composer
+    - nginx
     #
-    #- { role: mysql, when: "mysql_install" }
-    #- { role: postgresql, when: "pgsql_install" }
+    - { role: mysql, when: "mysql.install" }
+    - { role: postgresql, when: "pgsql.install" }
+    - { role: redis, when: "redis.install" }
     #
-    #- { role: blackfire, when: "blackfire_install" }
-    #- { role: mailcatcher, when: "mailcatcher_install" }
+    - { role: blackfire, when: "blackfire.install" }
+    - { role: mailcatcher, when: "mailcatcher.install" }
+    - { role: ngrok, when: "ngrok.install" }
     #
-    #- tool_base
-    #- { role: tool_beanstalkd-console, when: "beanstalkd_console_install" }
-    #- { role: tool_redis-commander, when: "redis_commander_install" }
+    - { role: tool_base, when: "tools.install" }
+    - { role: tool_beanstalkd-console, when: "tools.beanstalkd_console.install" }
+    - { role: tool_redis-commander, when: "tools.redis_commander.install" }
     #
-    #- finalize
+    - finalize

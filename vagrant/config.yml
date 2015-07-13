@@ -1,47 +1,58 @@
----
-# Vagrantfile configuration
-  box_ipaddress: "192.168.13.13"
-  box_memory: 2048
-  box_cpu: 1
-  default_name: "vagrantlemp"
+# Virtual system configuration
+box:
+  ip: "192.168.13.13"
+  memory: 2048
+  cpu: 1
 
-# Default settings
-  timezone: Europe/Istanbul
+# Default vagrant box name
+default_name: "vagrantlemp"
+
+# Default timezone
+timezone: Europe/Istanbul
 
 # Use vagrant cachier plugin
-  use_cachier: true
+use_cachier: true
 
 # Ansible provision settings
-  ansible_provision: true
-  ansible_verbose: false
-
-# MySQL, PostgreSQL root password. Same with Laravel Homestead.
-  sql_root_password: "secret"
-
+ansible:
+  provision: true
+  verbose: false
 
 # Install components:
 # - To install a component set it to true.
 # - To leave a component out of the install set the value to false.
 
-  # SQL
-  mysql_install: true
-  pgsql_install: true
+# SQL
+mysql:
+  install: true
+  root_password: "secret"
+pgsql:
+  install: true
+  root_password: "secret"
 
-  # NoSQL
-  redis_install: true
+# NoSQL
+redis:
+  install: true
 
-  # Mailcatcher
-  mailcatcher_install: true
-  mailcatcher_sendmail_replace: true # Replace php sendmail path for mailcatcher
+mailcatcher:
+  install: true
+  sendmail_replace: true # Replace php sendmail path for mailcatcher
+beanstalkd:
+  install: true
+blackfire:
+  install: true
+ngrok:
+  install: false
 
-  beanstalkd_install: true
-  blackfire_install: true
-
-  # Tools
-  beanstalkd_console_install: true
-  redis_commander_install: true
+# Tools
+tools:
+  install: true
+  beanstalkd_console:
+    install: true
+  redis_commander:
+    install: true
 
 # For some development test
-  test_install: true
-  debug_test_message: "Debug message test"
-  test_task_message: "Test Task"
+test:
+  install: false
+  message: "Debug message test"

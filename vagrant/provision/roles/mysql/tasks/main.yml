@@ -3,8 +3,8 @@
   template: src=my_credentials.cnf dest=/root/.my.cnf owner=root mode=0600
 
 # Install mysql
-- debconf: name="mysql-server" question="mysql-server/root_password" vtype="password" value={{ sql_root_password }}
-- debconf: name="mysql-server" question="mysql-server/root_password_again" vtype="password" value={{ sql_root_password }}
+- debconf: name="mysql-server" question="mysql-server/root_password" vtype="password" value={{ mysql.root_password }}
+- debconf: name="mysql-server" question="mysql-server/root_password_again" vtype="password" value={{ mysql.root_password }}
 - name: Install mysql
   apt: name={{ item }} state=latest
   with_items:
@@ -13,12 +13,11 @@
     - mytop
 
 # Configure MySQL Remote Access
-# TODO: Need test to remote connetc
 - name: Configure MySQL Remote Access
   lineinfile: dest=/etc/mysql/mysql.conf.d/mysqld.cnf regexp="bind-address.*=.*" line="bind-address = 10.0.2.15"
-- mysql_user: name=root host=10.0.2.2 priv=*.*:ALL,GRANT password={{ sql_root_password }}
-- mysql_user: name=homestead host=10.0.2.2 priv=*.*:ALL,GRANT password={{ sql_root_password }}
-- mysql_user: name=homestead host=% priv=*.*:ALL,GRANT password={{ sql_root_password }}
+- mysql_user: name=root host=10.0.2.2 priv=*.*:ALL,GRANT password={{ mysql.root_password }}
+- mysql_user: name=homestead host=10.0.2.2 priv=*.*:ALL,GRANT password={{ mysql.root_password }}
+- mysql_user: name=homestead host=% priv=*.*:ALL,GRANT password={{ mysql.root_password }}
   notify: restart mysql
 
 - name: Create a new database

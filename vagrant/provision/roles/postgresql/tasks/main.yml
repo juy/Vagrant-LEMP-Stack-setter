@@ -25,7 +25,7 @@
   lineinfile: dest=/etc/sudoers regexp="%sudo\s*ALL=.*NOPASSWD:ALL" line="%sudo ALL=(ALL) NOPASSWD:ALL"
 
 - name: Create user
-  postgresql_user: name=root role_attr_flags=SUPERUSER,INHERIT,NOCREATEDB,NOCREATEROLE,NOREPLICATION password="{{ sql_root_password }}"
+  postgresql_user: name=root role_attr_flags=SUPERUSER,INHERIT,NOCREATEDB,NOCREATEROLE,NOREPLICATION password="{{ pgsql.root_password }}"
   sudo_user: postgres
 
 - name: Create a new database

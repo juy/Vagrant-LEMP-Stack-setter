@@ -16,6 +16,15 @@ require 'yaml'
 $config_file = "vagrant/config.yml"
 $config = YAML::load_file($config_file)
 
+# Check vagrant version
+if Vagrant::VERSION < "6.0.0"
+  puts $config['box']['ip']
+  puts $config['box']['memory']
+  puts $config['box']['cpu']
+  puts
+  exit
+end
+
 # Vagrant configure
 Vagrant.configure(2) do |config|
 
@@ -38,7 +47,7 @@ Vagrant.configure(2) do |config|
   config.ssh.insert_key = false
 
   # Private network IP
-  config.vm.network :private_network, ip: $config['box_ipaddress']
+  config.vm.network :private_network, ip: $config['box']['ip']
   #config.ssh.forward_agent = true
 
   # Allow caching to be used
@@ -65,8 +74,8 @@ Vagrant.configure(2) do |config|
   config.vm.provider :virtualbox do |v|
       v.customize [
           "modifyvm", :id,
-          "--memory", $config['box_memory'],
-          "--cpus", $config['box_cpu'],
+          "--memory", $config['box']['memory'],
+          "--cpus", $config['box']['cpu'],
           "--natdnshostresolver1", "on",
           "--natdnsproxy1", "on",
           "--nestedpaging", "off",
@@ -87,18 +96,18 @@ Vagrant.configure(2) do |config|
   config.vm.network :forwarded_port, guest: 1080,  host: 10800, auto_correct: true  # MailCatcher
 
   # Ansible provisioning
-  if $config['ansible_provision']
+  if $config['ansible']['provision']
     if Vagrant::Util::Platform.windows?
       config.vm.provision "shell" do |s|
         s.path = "./vagrant/provision/provision.sh"
-        s.args = [$config['box_ipaddress'], ($config['ansible_verbose']) ? "y" : "n"]
+        s.args = [$config['box']['ip'], ($config['ansible']['verbose']) ? "y" : "n"]
       end
     else
       config.vm.provision :ansible do |ansible|
         ansible.playbook = "vagrant/provision/playbook.yml"
         ansible.inventory_path = "vagrant/provision/inventories/dev"
         ansible.limit = "all"
-        if $config['ansible_verbose']
+        if $config['ansible']['verbose']
           ansible.verbose = "vv"
         end
       end
