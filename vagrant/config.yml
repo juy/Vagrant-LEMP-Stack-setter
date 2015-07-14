@@ -24,6 +24,8 @@ ansible:
 # - To leave a component out of the install set the value to false.
 
 # SQL
+sqlite:
+  install: true
 mysql:
   install: true
   root_password: "secret"
@@ -48,6 +50,8 @@ node_global_packages:
   - laravel-elixir
 
 # Tools
+xdebug:
+  install: true
 mailcatcher:
   install: true
   sendmail_replace: true # Replace php sendmail path for mailcatcher

@@ -75,16 +75,17 @@ Vagrant.configure(2) do |config|
   end
 
   # Port forwarding
-  config.vm.network :forwarded_port, guest: 80,    host: 8000,  auto_correct: true
+  config.vm.network :forwarded_port, guest: 80,    host: 8800,  auto_correct: true
   config.vm.network :forwarded_port, guest: 443,   host: 44300, auto_correct: true
   config.vm.network :forwarded_port, guest: 3306,  host: 33060, auto_correct: true
+  config.vm.network :forwarded_port, guest: 4040,  host: 40400, auto_correct: true  # ngrok
   config.vm.network :forwarded_port, guest: 5432,  host: 54320, auto_correct: true
   config.vm.network :forwarded_port, guest: 6379,  host: 63790, auto_correct: true  # Redis
   config.vm.network :forwarded_port, guest: 8501,  host: 8501,  auto_correct: true  # Beanstalkd console
   config.vm.network :forwarded_port, guest: 8502,  host: 8502,  auto_correct: true  # Redis commander
   config.vm.network :forwarded_port, guest: 11211, host: 11212, auto_correct: true  # Memcached
   config.vm.network :forwarded_port, guest: 35729, host: 35729, auto_correct: true  # Livereload
-  config.vm.network :forwarded_port, guest: 1080,  host: 10800, auto_correct: true  # MailCatcher
+  config.vm.network :forwarded_port, guest: 1080,  host: 1080, auto_correct: true   # MailCatcher
 
   # Ansible provisioning
   if $config['ansible']['provision']

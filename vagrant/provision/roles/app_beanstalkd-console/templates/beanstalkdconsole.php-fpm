@@ -1,9 +1,9 @@
-[beanstalk]
+[beanstalkdconsole]
 
 user = www-data
 group = www-data
 
-listen = /var/run/php-fpm-beanstalk
+listen = /var/run/php-fpm-beanstalkdconsole
 listen.owner = www-data
 listen.group = www-data
 listen.mode = 0666
@@ -17,6 +17,6 @@ pm.max_spare_servers = 2
 pm.process_idle_timeout = 10s
 pm.max_requests = 500
 
-access.log = /var/log/php-fpm.beanstalk.access.log
-slowlog = /var/log/php-fpm.beanstalk.slow.log
+#access.log = /var/log/php-fpm.beanstalkdconsole.access.log
+#slowlog = /var/log/php-fpm.beanstalkdconsole.slow.log
 request_slowlog_timeout = 10s

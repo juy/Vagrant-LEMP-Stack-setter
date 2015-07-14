@@ -2,24 +2,24 @@
 # Beanstalk console
 # https://github.com/ptrofimov/beanstalk_console
 
-- name: clone beanstalkd console
-  git: repo=https://github.com/ptrofimov/beanstalk_console.git dest={{ tool_dir }}/beanstalkd
+- name: Clone beanstalkd console
+  git: repo=https://github.com/ptrofimov/beanstalk_console.git dest={{ tool_dir }}/beanstalkdconsole
   sudo_user: "{{ user }}"
 
 - name: Chmod 777 storage.json
-  command: sudo chmod 777 {{ tool_dir }}/beanstalkd/storage.json
+  command: sudo chmod 777 {{ tool_dir }}/beanstalkdconsole/storage.json
 
 - name: Configure beanstalkd console php-fpm pool
-  template: src=beanstalkd.php-fpm dest=/etc/php5/fpm/pool.d/beanstalkd.conf
+  template: src=beanstalkdconsole.php-fpm dest=/etc/php5/fpm/pool.d/beanstalkdconsole.conf
   notify: restart php5-fpm
 
 - name: Configure beanstalkd console nginx host
-  template: src=beanstalkd.nginx dest=/etc/nginx/sites-available/beanstalkd
+  template: src=beanstalkdconsole.nginx dest=/etc/nginx/sites-available/beanstalkdconsole
 
 - name: Enable nginx hosts
   file: src=/etc/nginx/sites-available/{{ item }} dest=/etc/nginx/sites-enabled/{{ item }} state=link
   with_items:
-    - beanstalkd
+    - beanstalkdconsole
   notify:
     - restart nginx
     - restart php5-fpm

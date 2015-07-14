@@ -1,7 +1,7 @@
 server {
 	listen 80 default_server;
 	server_name _;
-	root {{ srv_dir }}/index;
+	root {{ srv_dir }}/dashboard;
 
 	index index.php index.html;
 	charset utf-8;

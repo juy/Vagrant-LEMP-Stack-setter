@@ -1,18 +1,18 @@
 server {
 	listen 8501;
-	root {{ tool_dir }}/beanstalkd/public;
+	root {{ tool_dir }}/beanstalkdconsole/public;
 
 	index index.php;
 
 	access_log off;
 	error_log off;
-	#access_log /var/log/nginx/beanstalk.access.log;
-	#error_log /var/log/nginx/beanstalk.error.log notice;
+	#access_log /var/log/nginx/beanstalkdconsole.access.log;
+	#error_log /var/log/nginx/beanstalkdconsole.error.log notice;
 
 	sendfile off;
 
 	location ~ \.php$ {
-		fastcgi_pass unix:/var/run/php-fpm-beanstalk;
+		fastcgi_pass unix:/var/run/php-fpm-beanstalkdconsole;
 		fastcgi_split_path_info ^(.+\.php)(/.+)$;
 		include fastcgi_params;
 		fastcgi_index index.php;

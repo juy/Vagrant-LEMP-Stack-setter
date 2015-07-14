@@ -12,4 +12,4 @@
     - blackfire-php
   notify:
     - restart nginx
-    - restart hhvm
+    - restart php5-fpm

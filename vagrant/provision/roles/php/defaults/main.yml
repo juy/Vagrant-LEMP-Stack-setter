@@ -14,7 +14,6 @@ php_modules:
   - php5-gmp
   - php5-imap
   - php5-mcrypt
-  - php5-xdebug
   - php5-apcu
   - php5-memcached
   - php5-redis

@@ -1,0 +1,22 @@
+---
+- name: Configure dashboard nginx host
+  template: src={{ item }} dest=/etc/nginx/sites-available/{{ item|replace('.nginx','') }}
+  with_items:
+    - dashboard.nginx
+
+- name: Enable nginx hosts
+  file: src=/etc/nginx/sites-available/{{ item }} dest=/etc/nginx/sites-enabled/{{ item }} state=link
+  with_items:
+    - dashboard
+  notify: restart nginx
+
+- name: Create dashboard directory
+  file: path={{ item }} state=directory owner={{ user }} group={{ user }}
+  with_items:
+    - "{{ srv_dir }}/dashboard"
+
+- name: Copy default index and phpinfo file into dashboard directory
+  template: src={{ item }} dest={{ srv_dir }}/dashboard/{{ item }} owner={{ user }} group={{ user }} mode=640
+  with_items:
+    - index.php
+    - phpinfo.php

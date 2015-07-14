@@ -3,8 +3,8 @@
   template: src=my_credentials.cnf dest=/root/.my.cnf owner=root mode=0600
 
 # Install mysql
-- debconf: name="mysql-server" question="mysql-server/root_password" vtype="password" value={{ mysql.root_password }}
-- debconf: name="mysql-server" question="mysql-server/root_password_again" vtype="password" value={{ mysql.root_password }}
+- debconf: name="mysql-server" question="mysql-server/root_password" vtype="password" value={{ mysql.root_password|default('') }}
+- debconf: name="mysql-server" question="mysql-server/root_password_again" vtype="password" value={{ mysql.root_password|default('') }}
 - name: Install mysql
   apt: name={{ item }} state=latest
   with_items:
@@ -15,13 +15,35 @@
 # Configure MySQL Remote Access
 - name: Configure MySQL Remote Access
   lineinfile: dest=/etc/mysql/mysql.conf.d/mysqld.cnf regexp="bind-address.*=.*" line="bind-address = 10.0.2.15"
-- mysql_user: name=root host=10.0.2.2 priv=*.*:ALL,GRANT password={{ mysql.root_password }}
-- mysql_user: name=homestead host=10.0.2.2 priv=*.*:ALL,GRANT password={{ mysql.root_password }}
-- mysql_user: name=homestead host=% priv=*.*:ALL,GRANT password={{ mysql.root_password }}
   notify: restart mysql
+
+#- mysql_user: name=root host=10.0.2.2 priv=*.*:ALL,GRANT password={{ mysql.root_password|default('') }}
+#- mysql_user: name=homestead host=10.0.2.2 priv=*.*:ALL,GRANT password={{ mysql.root_password|default('') }}
+#- mysql_user: name=homestead host=% priv=*.*:ALL,GRANT password={{ mysql.root_password|default('') }}
+
+- name: Update root password for all hosts
+  mysql_user: >
+    name=root
+    host={{ item }}
+    password={{ mysql.root_password|default('') }}
+    priv=*.*:ALL,GRANT
+  with_items:
+    - 10.0.2.2
+    - 127.0.0.1
+    - ::1
+    - localhost
+
+- name: Update homestead password for all hosts
+  mysql_user: >
+    name=homestead
+    host={{ item }}
+    password={{ mysql.root_password|default('') }}
+    priv=*.*:ALL,GRANT
+  with_items:
+    - 10.0.2.2
+    - 127.0.0.1
+    - ::1
+    - localhost
 
 - name: Create a new database
   mysql_db: name={{ mysql.database }} collation=utf8_general_ci
-
-#- name: Create a database user
-#  mysql_user: name=root password=secret priv=*.*:ALL host=localhost

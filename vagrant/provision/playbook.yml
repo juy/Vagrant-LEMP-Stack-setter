@@ -15,12 +15,14 @@
     - prezto
     - dotfiles
     - node
-    - hhvm
     - supervisor
     - php
+    - { role: xdebug, when: "xdebug.install" }
+    - hhvm
     - composer
     - nginx
-    #
+    - dashboard
+    - { role: sqlite, when: "sqlite.install" }
     - { role: mysql, when: "mysql.install" }
     - { role: postgresql, when: "pgsql.install" }
     - { role: redis, when: "redis.install" }

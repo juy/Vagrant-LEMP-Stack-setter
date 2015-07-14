@@ -28,17 +28,15 @@
   when: nginxinstalled|success
 
 - name: Configure some nginx host
-  template: src={{ item }} dest=/etc/nginx/sites-available/{{ item|replace('.conf','') }}
+  template: src={{ item }} dest=/etc/nginx/sites-available/{{ item|replace('.nginx','') }}
   with_items:
-    - index.conf
-    - wildcard-laravel.conf
-    - wildcard-site.conf
+    - wildcard-laravel.nginx
+    - wildcard-site.nginx
   when: nginxinstalled|success
 
 - name: Enable nginx hosts
   file: src=/etc/nginx/sites-available/{{ item }} dest=/etc/nginx/sites-enabled/{{ item }} state=link
   with_items:
-    - index
     - wildcard-laravel
     - wildcard-site
   when: nginxinstalled|success
@@ -48,13 +46,5 @@
   file: path={{ item }} state=directory owner={{ user }} group={{ user }}
   with_items:
     - "{{ srv_dir }}"
-    - "{{ srv_dir }}/index"
     - "{{ www_dir }}"
-  when: nginxinstalled|success
-
-- name: Copy default index and phpinfo file into index directory
-  copy: src={{ item }} dest={{ srv_dir }}/index/{{ item }} owner={{ user }} group={{ user }} mode=640
-  with_items:
-    - index.php
-    - phpinfo.php
   when: nginxinstalled|success

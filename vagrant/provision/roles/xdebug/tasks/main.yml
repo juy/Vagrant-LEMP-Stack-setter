@@ -1,0 +1,8 @@
+---
+- name: Install xdebug
+  apt: name=php5-xdebug state=latest
+
+- name: Enable remote xdebug
+  template: src=xdebug.ini dest=/etc/php5/mods-available/xdebug.ini
+- file: src=/etc/php5/mods-available/xdebug.ini dest=/etc/php5/fpm/conf.d/20-xdebug.ini state=link force=yes
+  notify: restart php5-fpm
