@@ -56,19 +56,8 @@ beanstalkd:
 blackfire:
   install: true
 ngrok:
-  install: false
-  port: 8000
-  #subdomain: lempapp
-  #httpauth: 'user:password'
-  #proto: 'tcp 22'
-  #client: 'client1 client2 client3'
-  #hostname: 'your.domain.com'
-  #tunnels:
-  #  client:
-  #    httpauth: 'user:password'
-  #    proto: 'https 8080'
-  #  ssh:
-  #    proto: 'tcp: 22'
+  install: true
+  download_url: "https://dl.ngrok.com/ngrok_2.0.19_linux_amd64.zip"
 
 # Applications
 applications:
