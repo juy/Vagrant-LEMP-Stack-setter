@@ -31,9 +31,9 @@ Vagrant.configure(2) do |config|
   config.vbguest.auto_update = false
 
   # SSH settings
-  #config.ssh.username = 'vagrant'
-  #config.ssh.password = 'vagrant'
-  #config.ssh.insert_key = 'true'
+  #config.ssh.username = "vagrant"
+  #config.ssh.password = "vagrant"
+  #config.ssh.insert_key = true
   config.ssh.insert_key = false
 
   # Private network IP
