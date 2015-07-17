@@ -8,7 +8,7 @@
       include_vars: "{{ item }}"
       with_items: config_file
   roles:
-    #- { role: test, tags: ["test"], when: "test.install" }
+    - { role: test, tags: ["test"], when: "test.install" }
     - sources
     - common
     - git
@@ -16,16 +16,17 @@
     - dotfiles
     - node
     - supervisor
-    - php
-    - { role: xdebug, when: "xdebug.install" }
     - hhvm
-    - composer
     - nginx
-    - dashboard
+    #
     - { role: sqlite, when: "sqlite.install" }
     - { role: mysql, when: "mysql.install" }
     - { role: postgresql, when: "pgsql.install" }
     - { role: redis, when: "redis.install" }
+    - php
+    - { role: xdebug, when: "xdebug.install" }
+    - composer
+    - dashboard
     #
     - { role: beanstalkd, when: "beanstalkd.install" }
     - { role: blackfire, when: "blackfire.install" }

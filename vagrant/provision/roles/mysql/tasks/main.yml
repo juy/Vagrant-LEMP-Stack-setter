@@ -12,14 +12,9 @@
     - python-mysqldb
     - mytop
 
-# Configure MySQL Remote Access
 - name: Configure MySQL Remote Access
   lineinfile: dest=/etc/mysql/mysql.conf.d/mysqld.cnf regexp="bind-address.*=.*" line="bind-address = 10.0.2.15"
   notify: restart mysql
-
-#- mysql_user: name=root host=10.0.2.2 priv=*.*:ALL,GRANT password={{ mysql.root_password|default('') }}
-#- mysql_user: name=homestead host=10.0.2.2 priv=*.*:ALL,GRANT password={{ mysql.root_password|default('') }}
-#- mysql_user: name=homestead host=% priv=*.*:ALL,GRANT password={{ mysql.root_password|default('') }}
 
 - name: Update root password for all hosts
   mysql_user: >

@@ -12,7 +12,7 @@
   notify: reload redis-commander
 
 - name: Configure redis commander nginx host
-  template: src=rediscommander.nginx dest=/etc/nginx/sites-available/redisrediscommander
+  template: src=rediscommander.nginx dest=/etc/nginx/sites-available/rediscommander
 
 - name: Enable nginx hosts
   file: src=/etc/nginx/sites-available/{{ item }} dest=/etc/nginx/sites-enabled/{{ item }} state=link

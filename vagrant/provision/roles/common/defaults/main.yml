@@ -16,3 +16,4 @@ sys_packages:
   - autojump
   - zsh
   - libnotify-bin
+  - nfs-common

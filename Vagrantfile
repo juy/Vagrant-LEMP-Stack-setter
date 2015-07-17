@@ -13,19 +13,18 @@ end
 
 # Include config from config file
 require 'yaml'
-$config_file = "vagrant/config.yml"
-$config = YAML::load_file($config_file)
+$config = YAML::load_file("vagrant/config.yml")
 
 # Vagrant configure
 Vagrant.configure(2) do |config|
 
   # Configure the box
-  config.vm.box = "boxcutter/ubuntu1504" # https://atlas.hashicorp.com/boxcutter/boxes/ubuntu1504
+  config.vm.box = $config['vm']['box']
   config.vm.box_check_update = false
   config.vm.boot_timeout = 60
 
-  # Vagrant default name
-  config.vm.define "#{$config['default_name']}" do |t|
+  # Set the name of the VM. See: http://stackoverflow.com/a/17864388/100134
+  config.vm.define "#{$config['machine_name']}" do |t|
   end
 
   # https://github.com/dotless-de/vagrant-vbguest
@@ -38,7 +37,7 @@ Vagrant.configure(2) do |config|
   config.ssh.insert_key = false
 
   # Private network IP
-  config.vm.network :private_network, ip: $config['box']['ip']
+  config.vm.network :private_network, ip: $config['vm']['ip']
   #config.ssh.forward_agent = true
 
   # Allow caching to be used
@@ -65,10 +64,11 @@ Vagrant.configure(2) do |config|
   config.vm.provider :virtualbox do |v|
       v.customize [
           "modifyvm", :id,
-          "--memory", $config['box']['memory'],
-          "--cpus", $config['box']['cpu'],
+          "--memory", $config['vm']['memory'],
+          "--cpus", $config['vm']['cpu'],
           "--natdnshostresolver1", "on",
           "--natdnsproxy1", "on",
+          "--ioapic", "on",
           "--nestedpaging", "off",
           "--ostype", "Ubuntu_64"
       ]
@@ -92,13 +92,14 @@ Vagrant.configure(2) do |config|
     if Vagrant::Util::Platform.windows?
       config.vm.provision "shell" do |s|
         s.path = "./vagrant/provision/provision.sh"
-        s.args = [$config['box']['ip'], ($config['ansible']['verbose']) ? "y" : "n"]
+        s.args = [$config['vm']['ip'], ($config['ansible']['verbose']) ? "y" : "n", "/vagrant/provision/playbook.yml"]
       end
     else
       config.vm.provision :ansible do |ansible|
         ansible.playbook = "vagrant/provision/playbook.yml"
         ansible.inventory_path = "vagrant/provision/inventories/dev"
         ansible.limit = "all"
+        ansible.sudo = true
         if $config['ansible']['verbose']
           ansible.verbose = "vv"
         end

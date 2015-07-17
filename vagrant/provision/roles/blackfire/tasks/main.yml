@@ -11,5 +11,4 @@
     - blackfire-agent
     - blackfire-php
   notify:
-    - restart nginx
-    - restart php5-fpm
+     - restart php5-fpm

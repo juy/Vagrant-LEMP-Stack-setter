@@ -1,6 +1,5 @@
 <?php
 
-{% if mysql.install is defined %}
 
 /**
  * MySQL
@@ -8,8 +7,8 @@
 
 // Settings for MySQL
 $mysql_username = 'root';
-$mysql_password = '{{ mysql.root_password }}';
-$mysql_database = '{{ mysql.database }}';
+$mysql_password = 'secret';
+$mysql_database = 'homestead';
 
 $mysql_running = false;
 $mysql_version = false;
@@ -23,10 +22,8 @@ catch(PDOException $e) {
     //echo $e->getMessage();
 }
 
-{% endif %}
 
 
-{% if pgsql.install is defined %}
 
 /**
  * PostgreSQL
@@ -34,8 +31,8 @@ catch(PDOException $e) {
 
 // Settings for PostgreSQL
 $pgsql_username = 'root';
-$pgsql_password = '{{ pgsql.root_password }}';
-$pgsql_database = '{{ pgsql.database }}';
+$pgsql_password = 'secret';
+$pgsql_database = 'homestead';
 
 $pgsql_running = false;
 $pgsql_version = false;
@@ -54,7 +51,6 @@ catch(PDOException $e) {
     //echo $e->getMessage();
 }
 
-{% endif %}
 
 
 /**
@@ -74,7 +70,6 @@ if ($m->addServer('localhost', 11211))
 }
 
 
-{% if redis.install is defined %}
 
 /**
  * Redis
@@ -101,7 +96,6 @@ catch (RedisException $e) {
     // Redis server went away
 }
 
-{% endif %}
 
 
 /**
@@ -154,41 +148,35 @@ $php_version = $php_version[0];
 					<td>PHP Version</td>
 					<td><?php echo $php_version; ?></td>
 				</tr>
-				{% if mysql.install is defined %}
-				<tr>
+								<tr>
 					<td>MySQL running</td>
 					<td>
                         <i class="fa fa-<?php echo ($mysql_running ? 'check' : 'times'); ?>"></i>
                         <?php echo ($mysql_running ? $mysql_version : ''); ?>
                     </td>
 				</tr>
-				{% endif %}
-				{% if pgsql.install is defined %}
-                <tr>
+								                <tr>
                     <td>PostgreSQL running</td>
                     <td>
                         <i class="fa fa-<?php echo ($pgsql_running ? 'check' : 'times'); ?>"></i>
                         <?php echo ($pgsql_running ? $pgsql_version : ''); ?>
                     </td>
                 </tr>
-                {% endif %}
-				<tr>
+                				<tr>
 					<td>Memcached running</td>
 					<td>
                         <i class="fa fa-<?php echo ($memcached_running ? 'check' : 'times'); ?>"></i>
                         <?php echo ($memcached_version ? $memcached_version : ''); ?>
                     </td>
 				</tr>
-				{% if redis.install is defined %}
-				<tr>
+								<tr>
 					<td>Redis running</td>
 					<td>
                         <i class="fa fa-<?php echo ($redis_running ? 'check' : 'times'); ?>"></i>
                         <?php echo ($redis_version ? $redis_version : ''); ?>
                     </td>
 				</tr>
-				{% endif %}
-			</table>
+							</table>
 
 			<h3>PHP Modules</h3>
 

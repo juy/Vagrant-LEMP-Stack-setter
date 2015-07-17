@@ -31,12 +31,3 @@
     dest=/usr/local/bin/ngrok
     state=link
   when: not ngrok_installed.stat.exists
-
-#- name: Add ngrok start script
-#  template: >
-#    src=ngrok.sh.j2
-#    dest=/usr/local/bin/ngrok
-#    owner={{ user }}
-#    group={{ user }}
-#    mode=0755
-#  when: not ngrok_installed.stat.exists

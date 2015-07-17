@@ -26,5 +26,5 @@
   sudo_user: postgres
 
 - name: Create a new database
-  postgresql_db: name={{ mpgsql.root_password|default('') }} owner=root
+  postgresql_db: name={{ pgsql.database }} owner=root
   sudo_user: postgres

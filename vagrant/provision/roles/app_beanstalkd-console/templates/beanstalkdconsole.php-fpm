@@ -17,6 +17,6 @@ pm.max_spare_servers = 2
 pm.process_idle_timeout = 10s
 pm.max_requests = 500
 
-#access.log = /var/log/php-fpm.beanstalkdconsole.access.log
-#slowlog = /var/log/php-fpm.beanstalkdconsole.slow.log
-request_slowlog_timeout = 10s
+;access.log = /var/log/php-fpm.beanstalkdconsole.access.log
+;slowlog = /var/log/php-fpm.beanstalkdconsole.slow.log
+;request_slowlog_timeout = 10s
