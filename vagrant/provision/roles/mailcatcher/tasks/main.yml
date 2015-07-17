@@ -1,7 +1,4 @@
 ---
-- name: Install MailCatcher prerequisite packages
-  apt: name=ruby-dev state=latest
-
 - name: Install MailCatcher
   shell: gem install mailcatcher creates=/usr/bin/mailcatcher
 

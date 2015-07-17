@@ -91,7 +91,9 @@ alias tarc='tar -czvf' # compress tar
 alias cl='clear'
 alias wget='wget -c'
 alias npm='npm --no-bin-links'
+
 alias apt-get='sudo apt-get'
+alias apt-add-repository='sudo apt-add-repository'
 
 alias cp='cp -iv'
 alias rm='rm -i'

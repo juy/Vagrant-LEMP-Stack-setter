@@ -1,12 +1,14 @@
 ---
 locales: [ en_US.UTF-8, tr_TR.UTF-8 ]
 sys_packages:
+  - software-properties-common
   - curl
   - dos2unix
   - libmcrypt4
   - libpcre3-dev
   - python2.7-dev
   - python-pip
+  - ruby-dev
   - re2c
   - memcached
   - whois
