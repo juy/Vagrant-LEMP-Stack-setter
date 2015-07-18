@@ -1,5 +1,5 @@
 ---
-- name: Install postgres
+- name: Install postgresql
   apt: name={{ item }} state=latest
   with_items:
     - postgresql
@@ -8,23 +8,23 @@
     - python-psycopg2
     - pgtop
 
-- name: Configure postgres remote access
+- name: Configure postgresql remote access
   lineinfile: dest=/etc/postgresql/9.4/main/postgresql.conf regexp="listen_addresses =.*" line="listen_addresses = '*'"
   sudo_user: postgres
   notify: restart postgresql
 
-- name: Configure postgres remote access
+- name: Configure postgresql remote access
   lineinfile: dest=/etc/postgresql/9.4/main/pg_hba.conf line="host all all 10.0.2.2/32 md5"
   sudo_user: postgres
   notify: restart postgresql
 
-- name: Create user
+- name: Create postgresql user
   postgresql_user: >
     name=root
     role_attr_flags=SUPERUSER,INHERIT,NOCREATEDB,NOCREATEROLE,NOREPLICATION
     password="{{ pgsql.root_password|default('') }}"
   sudo_user: postgres
 
-- name: Create a new database
+- name: Create a new postgresql database
   postgresql_db: name={{ pgsql.database }} owner=root
   sudo_user: postgres

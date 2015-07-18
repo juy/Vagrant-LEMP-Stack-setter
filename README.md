@@ -1,8 +1,8 @@
-## Vagrant LEMP Stack - setter
+## Vagrant LEMP Stack - setter/provisioner
+
+**This part is setter/provisioner for Vagrant LEMP Stack project, for end user part please visit [Vagrant-LEMP-Stack](https://github.com/juy/Vagrant-LEMP-Stack). **
 
 A development platform in a box, with everything you would need to develop PHP websites.
-
-**Current status:** Development, **Next:** Test, **Last:** Product
 
 > Used "boxcutter/ubuntu1504" v1.1.0 vagrant box *(only virtualbox provider)* with ansible provision. Modified it for our own use, especially for Laravel projects. 
 
@@ -42,7 +42,8 @@ Provision with ansible.
 	- [x] bower
 	- [x] gulp
 - **Composer global packages**
-	- [x] Laravel Installer
+    - [x] Laravel Installer
+	- [x] Lumen Installer
 	- [x] Laravel Envoy
 - **SSH tools**
 	- [x] htop
@@ -56,15 +57,8 @@ Provision with ansible.
 	- [x] Redis Commander - https://github.com/joeferner/redis-commander
 
 
-### TODO
-- [ ] Test ansible provision on linux/ubuntu host.
-- [ ] "Web GUI tools" need more test for stability.
-- [ ] Some code clean up.
-
-
 ### License
 This project is open-sourced software licensed under the [MIT license][mit-url].
-
 
 
 [paypal-donate-img]: https://img.shields.io/badge/PayPal-donate-brightgreen.svg?style=flat-square

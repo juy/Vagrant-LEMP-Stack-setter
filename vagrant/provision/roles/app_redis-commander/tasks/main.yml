@@ -4,8 +4,6 @@
 
 - name: Install redis commander
   npm: name=redis-commander state=present global=yes
-  # TODO: need "supervisor start on boot"
-  # sudo supervisorctl start redis
 
 - name: Configure redis commander supervisor
   template: src=rediscommander.supervisor dest=/etc/supervisor/conf.d/rediscommander.conf

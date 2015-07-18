@@ -1,5 +1,4 @@
 ---
-
 - name: Check if installed
   stat: >
     path=/usr/local/bin/ngrok
