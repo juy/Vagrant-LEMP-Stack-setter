@@ -18,26 +18,30 @@ If you'd like to support this and other our creations projects, donate via [PayP
 ### Provision Content
 Provision with ansible.
 
-- **Global**
+### Content
+- **OS**
 	- [x] Ubuntu Server 15.04 Vivid Vervet (64-bit) - [boxcutter/ubuntu1504](https://atlas.hashicorp.com/boxcutter/boxes/ubuntu1504) v1.1.0
+- **Base Packages**
 	- [x] Ansible
 	- [x] Nginx
-	- [x] PHP
-	- [x] HHVM (Only for composer speed up)
+	- [x] PHP (php-fpm)
 	- [x] Git, git-flow, git-extras
 	- [x] Composer
-	- [x] Mailcatcher
 	- [x] Ruby
+	- [x] HHVM (Only for composer speed up)
+- **Databases**
+	- [x] MySQL
+	- [x] PostgreSQL
+	- [x] SQLite
+- **In-Memory Stores**
+	- [x] Redis
+	- [x] Memcached
+- **Utility **
+	- [x] Mailcatcher
 	- [x] Beanstalkd
 	- [x] Supervisord
 	- [x] Blackfire
 	- [x] Ngrok
-- **Database & Cache**
-	- [x] MySQL
-	- [x] PostgreSQL
-	- [x] SQLite
-	- [x] Redis
-	- [x] Memcached
 - **Asset tools**
 	- [x] node.js
 	- [x] bower
