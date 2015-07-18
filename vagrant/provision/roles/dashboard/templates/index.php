@@ -259,7 +259,7 @@ $php_version = $php_version[0];
 		<div class="container">
 			<p class="muted credit">
 				<a href="https://github.com/juy/Vagrant-LEMP-Stack" target="_blank">Vagrant LAMP Stack</a> by
-				<a href="http://juysoft.com" traget="_blank">JuySoft</a>.
+				<a href="http://www.juysoft.com" traget="_blank">JuySoft</a>.
 			</p>
 		</div>
 	</div>
