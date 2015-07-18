@@ -23,7 +23,7 @@ Provision with ansible.
 	- [x] Ansible
 	- [x] Nginx
 	- [x] PHP
-	- [x] HHVM
+	- [x] HHVM (Only for composer speed up)
 	- [x] Git, git-flow, git-extras
 	- [x] Composer
 	- [x] Mailcatcher
@@ -31,6 +31,7 @@ Provision with ansible.
 	- [x] Beanstalkd
 	- [x] Supervisord
 	- [x] Blackfire
+	- [x] Ngrok
 - **Database & Cache**
 	- [x] MySQL
 	- [x] PostgreSQL
