@@ -41,7 +41,7 @@ Provision with ansible.
 	- [x] Mailcatcher
 	- [x] Beanstalkd
 	- [x] Supervisord
-	- [x] Blackfire
+	- [x] Blackfire profiler
 	- [x] Ngrok
 - **Asset tools**
 	- [x] node.js, npm
