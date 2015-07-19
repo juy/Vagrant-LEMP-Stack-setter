@@ -43,7 +43,7 @@ Provision with ansible.
 	- [x] Blackfire
 	- [x] Ngrok
 - **Asset tools**
-	- [x] node.js
+	- [x] node.js, npm
 	- [x] bower
 	- [x] gulp
 - **Composer global packages**
