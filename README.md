@@ -29,6 +29,7 @@ Provision with ansible.
 	- [x] Composer
 	- [x] Ruby
 	- [x] HHVM (Only for composer speed up)
+    - [x] VirtualBox Guest Additions
 - **Databases**
 	- [x] MySQL
 	- [x] PostgreSQL
