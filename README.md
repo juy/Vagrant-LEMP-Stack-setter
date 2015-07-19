@@ -2,7 +2,7 @@
 
 **This part is setter/provisioner for Vagrant LEMP Stack project, for end user part please visit [Vagrant-LEMP-Stack](https://github.com/juy/Vagrant-LEMP-Stack). **
 
-A development platform in a box, with everything you would need to develop PHP websites.
+A development platform in a box, with everything you would need to develop PHP/Laravel websites.
 
 > Used "boxcutter/ubuntu1504" v1.1.0 vagrant box *(only virtualbox provider)* with ansible provision. Modified it for our own use, especially for Laravel projects. 
 
