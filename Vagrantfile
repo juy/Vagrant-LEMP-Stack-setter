@@ -7,13 +7,21 @@
 if Vagrant::VERSION < "1.5.0"
   puts "Please upgrade to vagrant 1.5+: "
   puts "https://www.vagrantup.com/downloads.html"
-  puts
+  exit
+end
+
+$config_file = "vagrant/config.yml"
+
+# Check for config file
+if !File.file?($config_file)
+  puts "Config file is missing: #{$config_file}\n"
+  puts "Please rename config.example.yml to config.yml in vagrant/ directory"
   exit
 end
 
 # Include config from config file
 require 'yaml'
-$config = YAML::load_file("vagrant/config.yml")
+$config = YAML::load_file($config_file)
 
 # Vagrant configure
 Vagrant.configure(2) do |config|
