@@ -36,7 +36,9 @@ Vagrant.configure(2) do |config|
   end
 
   # https://github.com/dotless-de/vagrant-vbguest
-  config.vbguest.auto_update = false
+  if Vagrant.has_plugin?("vagrant-cachier")
+    config.vbguest.auto_update = false
+  end
 
   # SSH settings
   #config.ssh.username = "vagrant"
