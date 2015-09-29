@@ -28,6 +28,7 @@ server {
 	# Static files aren't logged and expires header is set to maximum age
 	location ~* \.(ogg|ogv|svg|svgz|eot|otf|woff|ttf|css|rss|atom|js|jpe?g|gif|png|ico|html|txt|htm)$ {
 		access_log off;
+        log_not_found off;
 		# Don't send cookies
 		fastcgi_hide_header Set-Cookie;
 	}
