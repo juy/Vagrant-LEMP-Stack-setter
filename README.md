@@ -37,7 +37,7 @@ Provision with ansible.
 - **In-Memory Stores**
 	- [x] Redis
 	- [x] Memcached
-- **Utility **
+- **Utility**
 	- [x] Mailcatcher
 	- [x] Beanstalkd
 	- [x] Supervisord
