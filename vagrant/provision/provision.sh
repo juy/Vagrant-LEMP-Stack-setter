@@ -15,13 +15,6 @@ if ! which ansible > /dev/null; then
     sudo apt-add-repository ppa:ansible/ansible
     sudo apt-get install -y -qq software-properties-common
     sudo apt-get install -y -qq ansible
-
-    # Ansible 1.9.2
-    #sudo apt-get update -qq
-    #sudo apt-get install -y -qq software-properties-common
-    #sudo apt-get install -y -qq python-pip python-dev
-    #sudo pip -q install ansible
-    #mkdir /etc/ansible/
 fi
 
 # Ansible provision
@@ -35,8 +28,6 @@ echo "Ansible provision start..."
 # Run the playbook
 if [ "$VERBOSE" = "y" ]; then
     sudo -i ansible-playbook $ANSIBLE_PLAYBOOK --connection=local -v
-    #ansible-playbook -i 'localhost,' "${ANSIBLE_PLAYBOOK}" --extra-vars "is_windows=true" --connection=local -v
 else
     sudo -i ansible-playbook $ANSIBLE_PLAYBOOK --connection=local
-    #ansible-playbook -i 'localhost,' "${ANSIBLE_PLAYBOOK}" --extra-vars "is_windows=true" --connection=local
 fi
