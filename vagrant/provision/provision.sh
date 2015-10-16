@@ -16,6 +16,7 @@ if ! which ansible > /dev/null; then
     sudo apt-add-repository -y ppa:ansible/ansible
     sudo apt-get update -qq
     sudo apt-get install -y -qq ansible
+    sudo apt-get install -y -qq sshpass
 fi
 
 # Ansible provision
