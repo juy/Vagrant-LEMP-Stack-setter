@@ -10,10 +10,11 @@ if ! which ansible > /dev/null; then
     # Ansible does't exist, install it
     echo "Installing ansible";
 
-    # Ansible 1.7.2
+    # Install ansible - On test ansible version is 1.9.4
     sudo apt-get update -qq
-    sudo apt-add-repository ppa:ansible/ansible
     sudo apt-get install -y -qq software-properties-common
+    sudo apt-add-repository -y ppa:ansible/ansible
+    sudo apt-get update -qq
     sudo apt-get install -y -qq ansible
 fi
 
