@@ -21,6 +21,7 @@ fi
 
 # Ansible provision
 
+# Setup hosts file; only need to show correct ip address on provisioning.
 sudo cp /vagrant/provision/inventories/dev /etc/ansible/hosts -f
 sudo chmod 666 /etc/ansible/hosts
 sudo sed -i "s/ip/$BOX_IP/g" /etc/ansible/hosts
