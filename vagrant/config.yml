@@ -1,9 +1,9 @@
 # Virtual system configuration
 vm:
-  box: "boxcutter/ubuntu1504"
   ip: "192.168.13.13"
   memory: 2048
   cpu: 1
+  box: "boxcutter/ubuntu1504"
 user: "vagrant"
 
 # Set the name of the VM
