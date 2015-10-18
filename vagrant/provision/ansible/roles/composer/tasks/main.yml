@@ -8,6 +8,9 @@
 - name: Make composer executable
   shell: chmod a+x /usr/local/bin/composer
 
+- name: Update Composer to latest version
+  shell: composer self-update
+
 - name: Composer global packages
   shell: composer global require {{ item.key }}:{{ item.value }} --no-progress
   with_dict: composer_global_packages
