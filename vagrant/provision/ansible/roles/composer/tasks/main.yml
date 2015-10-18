@@ -11,7 +11,7 @@
 - name: Update Composer to latest version
   shell: composer self-update
 
-- name: Composer global packages
+- name: Install composer global packages
   shell: composer global require {{ item.key }}:{{ item.value }} --no-progress
   with_dict: composer_global_packages
   sudo_user: "{{ user }}"
