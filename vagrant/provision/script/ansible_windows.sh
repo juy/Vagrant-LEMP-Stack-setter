@@ -5,6 +5,12 @@ ANSIBLE_PLAYBOOK=$1
 BOX_IP=$2;
 VERBOSE=$3;
 
+# Make sure Ansible playbook exists
+if [ ! -f "$ANSIBLE_PLAYBOOK" ]; then
+    echo "Cannot find Ansible playbook."
+    exit 1
+fi
+
 # Check if ansible installed
 if ! which ansible > /dev/null; then
     # Ansible does't exist, install it
