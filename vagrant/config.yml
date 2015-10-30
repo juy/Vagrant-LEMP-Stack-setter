@@ -59,7 +59,8 @@ xdebug:
   install: true
 mailcatcher:
   install: true
-  sendmail_replace: true # Replace php sendmail path for mailcatcher
+  # Replace php sendmail path for mailcatcher
+  sendmail_replace: true
 beanstalkd:
   install: true
 blackfire:
