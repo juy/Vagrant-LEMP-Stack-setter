@@ -9,6 +9,7 @@ server {
 	sendfile   off;
 	access_log off;
 	error_log  off;
+    # BUG: Variables not work with logs: $sname-error.log
 	#access_log /var/log/nginx/$sname-access.log;
 	#error_log  /var/log/nginx/$sname-error.log debug;
 	#error_log  /var/log/nginx/$sname-error.log error;
