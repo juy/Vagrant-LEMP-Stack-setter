@@ -174,3 +174,7 @@ bindkey -s "^[OR" "*"
 bindkey -s "^[OS" "-"
 bindkey -s "^[Ol" "+"
 #END Keypad
+
+# Who doesn't want home and end to work?
+bindkey '\e[1~' beginning-of-line
+bindkey '\e[4~' end-of-line
