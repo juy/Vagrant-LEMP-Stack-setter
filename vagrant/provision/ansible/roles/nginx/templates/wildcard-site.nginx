@@ -16,7 +16,7 @@ server {
 
 	# If site directory not exist
 	if (!-d {{ www_dir }}/$sname) {
-		rewrite . http://127.0.0.1:8000/ redirect;
+		rewrite . http://127.0.0.1:8800/ redirect;
 	}
 
 	location / {
