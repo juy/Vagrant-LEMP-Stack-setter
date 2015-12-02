@@ -19,3 +19,4 @@ sys_packages:
   - zsh
   - libnotify-bin
   - nfs-common
+  - nfs-kernel-server
