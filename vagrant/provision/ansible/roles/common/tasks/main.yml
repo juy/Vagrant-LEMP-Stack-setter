@@ -3,10 +3,6 @@
   apt: name={{ item }} state=latest update_cache=yes cache_valid_time=3600
   with_items: sys_packages
 
-# Real-time metrics for nginx server  https://github.com/lebinh/ngxtop
-- name: Install ngxtop python package
-  pip: name=ngxtop
-
 - name: Set locales
   locale_gen: name={{ item }} state=present
   with_items: locales

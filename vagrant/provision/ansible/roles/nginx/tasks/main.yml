@@ -48,3 +48,7 @@
     - "{{ srv_dir }}"
     - "{{ www_dir }}"
   when: nginxinstalled|success
+  
+  # Real-time metrics for nginx server  https://github.com/lebinh/ngxtop
+- name: Install ngxtop python package
+  pip: name=ngxtop
