@@ -14,7 +14,7 @@ user: "vagrant"
 machine_name: "vagrantlemp"
 
 # Default timezone
-timezone: Europe/Istanbul
+timezone: UTC
 
 # Use vagrant cachier plugin
 use_cachier: true
