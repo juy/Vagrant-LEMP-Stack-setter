@@ -9,18 +9,6 @@
 - name: Make mcrypt available
   file: src=/etc/php5/mods-available/mcrypt.ini dest=/etc/php5/cli/conf.d/20-mcrypt.ini state=link force=yes
 
-- name: Install mailparse pecl extension
-  command: pecl install mailparse
-  register: pecl_result
-  changed_when: "'already installed' not in pecl_result.stdout"
-  failed_when: "pecl_result.stderr or ('ERROR' in pecl_result.stdout)"
-
-- name: Create mailparse.ini
-  copy: content="extension=mailparse.so" dest=/etc/php5/mods-available/mailparse.ini
-
-- name: Make mailparse available
-  file: src=/etc/php5/mods-available/mailparse.ini dest=/etc/php5/cli/conf.d/20-mailparse.ini state=link force=yes
-
 - name: Set php5-fpm user
   lineinfile: dest=/etc/php5/fpm/pool.d/www.conf regexp="{{ item.regex }}" line="{{ item.line }}"
   with_items:
