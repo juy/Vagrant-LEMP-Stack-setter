@@ -1,0 +1,26 @@
+---
+- name: Add PHP 7 PPA
+  apt_repository: repo="ppa:ondrej/php-7.0" update_cache=yes
+
+- name: Install PHP 7
+  apt: name="{{ item }}" state=latest force=yes
+  with_items: php_modules
+
+- name: Make mcrypt available
+  file: src=/etc/php/7.0/mods-available/mcrypt.ini dest=/etc/php/7.0/cli/conf.d/20-mcrypt.ini state=link force=yes
+
+- name: Set php5-fpm user
+  lineinfile: dest=/etc/php/7.0/fpm/pool.d/www.conf regexp="{{ item.regex }}" line="{{ item.line }}"
+  with_items:
+    - {regex: "^user = .*", line: "user = {{ user }}"}
+    - {regex: "^group = .*", line: "group = {{ user }}"}
+    - {regex: "^;?listen.owner", line: "listen.owner = {{ user }}"}
+    - {regex: "^;?listen.group", line: "listen.group = {{ user }}"}
+    - {regex: "^;?listen.mode", line: "listen.mode = 0666"}
+
+- name: Set some PHP-FPM settings
+  template: src=php-fpm.ini dest=/etc/php/7.0/fpm/conf.d/00-php.ini
+
+- name: Set some PHP-CLI settings
+  template: src=php.ini dest=/etc/php/7.0/cli/conf.d/00-php.ini
+  notify: restart php7-fpm
