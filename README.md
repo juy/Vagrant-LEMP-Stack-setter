@@ -20,7 +20,7 @@ Provision with ansible.
 
 ### Content
 - **OS**
-	- [x] Ubuntu Server 15.04 Vivid Vervet (64-bit) - [boxcutter/ubuntu1504](https://atlas.hashicorp.com/boxcutter/boxes/ubuntu1504) v1.1.0
+	- [x] Ubuntu Server 15.04 Vivid Vervet (64-bit) - [boxcutter/ubuntu1504](https://atlas.hashicorp.com/boxcutter/boxes/ubuntu1504) v2.0.10
 - **Base Packages**
 	- [x] Ansible
 	- [x] Nginx
