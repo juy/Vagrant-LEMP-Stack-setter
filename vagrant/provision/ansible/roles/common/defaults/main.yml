@@ -18,5 +18,6 @@ sys_packages:
   - autojump
   - zsh
   - libnotify-bin
+  - unattended-upgrades
   - nfs-common
   - nfs-kernel-server
