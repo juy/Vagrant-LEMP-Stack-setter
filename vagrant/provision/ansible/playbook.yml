@@ -9,7 +9,6 @@
       with_items: config_file
   roles:
     - { role: test, tags: ["test"], when: "test.install" }
-    - sources
     - common
     - git
     - prezto
