@@ -7,12 +7,6 @@
   locale_gen: name={{ item }} state=present
   with_items: locales
 
-- name: Set timezone variables
-  template: src=timezone.j2 dest=/etc/timezone owner=root group=root mode=0644 backup=no
-  notify:
-    - dpkg-reconfigure tzdata
-    - configure localtime
-
 - name: Disable SSH last login print
   lineinfile: dest=/etc/ssh/sshd_config regexp="PrintLastLog yes" line="PrintLastLog no"
   notify: restart sshd
