@@ -45,7 +45,7 @@ redis:
   install: true
 
 composer_global_packages:
-  laravel/installer: "~1.2"
+  laravel/installer: "~1.0"
   laravel/lumen-installer: "~1.0"
   laravel/spark-installer: "~1.0"
   laravel/envoy: "~1.0"
