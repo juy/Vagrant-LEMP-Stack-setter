@@ -54,6 +54,7 @@ node_global_packages:
   - bower
   - gulp
   - laravel-elixir
+  - npm-check-updates
 
 # Tools
 xdebug:
