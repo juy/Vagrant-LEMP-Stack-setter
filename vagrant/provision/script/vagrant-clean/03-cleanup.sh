@@ -44,6 +44,8 @@ rm -f /root/.bash_history
 rm -f /home/${SSH_USER}/.bash_history
 rm -f /home/${SSH_USER}/.nano_history
 rm -f /home/${SSH_USER}/.zhistory
+rm -r /home/${SSH_USER}/.sudo_as_admin_successful
+rm -r /home/${SSH_USER}/.redis-commander
 
 print_green "==> Clean up log files"
 find /var/log -type f | while read f; do echo -ne '' > $f; done;
