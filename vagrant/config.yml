@@ -49,6 +49,7 @@ composer_global_packages:
   laravel/lumen-installer: "~1.0"
   laravel/spark-installer: "~1.0"
   laravel/envoy: "~1.0"
+  vinkla/climb: "~1.0"
 
 node_global_packages:
   - bower
