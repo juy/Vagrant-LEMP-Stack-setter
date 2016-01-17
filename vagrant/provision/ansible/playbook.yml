@@ -23,7 +23,7 @@
     - { role: mysql, when: "mysql.install" }
     - { role: postgresql, when: "pgsql.install" }
     - { role: redis, when: "redis.install" }
-    - php
+    - php5.6
     - { role: xdebug, when: "xdebug.install" }
     - composer
     - dashboard
