@@ -6,7 +6,7 @@ vm:
 
 box:
   name: "boxcutter/ubuntu1504"
-  version: "2.0.10"
+  version: "2.0.13"
 
 user: "vagrant"
 
