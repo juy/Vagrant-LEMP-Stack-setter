@@ -4,7 +4,7 @@
 
 - name: Clone beanstalkd console
   git: repo=https://github.com/ptrofimov/beanstalk_console.git dest={{ tool_dir }}/beanstalkdconsole
-  sudo_user: "{{ user }}"
+  become_user: "{{ user }}"
 
 - name: Chmod 777 storage.json
   command: sudo chmod 777 {{ tool_dir }}/beanstalkdconsole/storage.json

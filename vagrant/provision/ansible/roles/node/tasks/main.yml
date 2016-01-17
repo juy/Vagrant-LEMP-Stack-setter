@@ -41,5 +41,5 @@
 - name: Install node.js global packages
   npm: name={{ item }} global=yes state=latest
   with_items: node_global_packages
-  sudo_user: "{{ user }}"
+  become_user: "{{ user }}"
   when: distrosupported|success

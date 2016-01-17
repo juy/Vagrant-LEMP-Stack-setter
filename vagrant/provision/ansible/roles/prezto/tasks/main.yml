@@ -1,7 +1,7 @@
 ---
 - name: Clone prezto repo
   git: repo=https://github.com/sorin-ionescu/prezto.git dest={{ home_dir }}/.zprezto
-  sudo_user: "{{ user }}"
+  become_user: "{{ user }}"
 
 - name: Link in prezto files
   file: state=link src={{ home_dir }}/.zprezto/runcoms/{{ item }} path={{ home_dir }}/.{{ item }} owner={{ user }} group={{ user }}
