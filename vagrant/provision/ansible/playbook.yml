@@ -16,7 +16,6 @@
     - dotfiles
     - node
     - supervisor
-    - hhvm
     - nginx
     #
     - { role: sqlite, when: "sqlite.install" }
@@ -24,6 +23,7 @@
     - { role: postgresql, when: "pgsql.install" }
     - { role: redis, when: "redis.install" }
     - php5.6
+    - hhvm
     - { role: xdebug, when: "xdebug.install" }
     - composer
     - dashboard
