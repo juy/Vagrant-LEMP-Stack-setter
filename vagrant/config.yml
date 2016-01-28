@@ -56,6 +56,7 @@ node_global_packages:
   - gulp
   - laravel-elixir
   - npm-check-updates
+  - ied # https://github.com/alexanderGugel/ied
 
 # Tools
 xdebug:
