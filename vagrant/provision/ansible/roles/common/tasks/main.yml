@@ -24,5 +24,7 @@
     line='%sudo   ALL=(ALL) NOPASSWD:ALL'
     state=present backup=yes
 
-- name: Download cacert.pem
-  get_url: url=http://curl.haxx.se/ca/cacert.pem dest=/etc/ssl/certs/curl_cacert.pem mode=0644
+#- name: Download cacert.pem
+#  get_url: url=http://curl.haxx.se/ca/cacert.pem dest=/etc/ssl/certs/curl_cacert.pem mode=644
+- name: Copy cacert.pem
+  copy: src=cacert.pem dest={{ home_dir }}/etc/ssl/certs/curl_cacert.pem mode=640
