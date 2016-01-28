@@ -4,10 +4,7 @@ print_green(){
     echo -e "\e[32m${1}\e[0m"
 }
 
-print_green "==> Disk usage before cleanup"
-df -h
-
-#echo "==> Installed packages before cleanup"
+#echo "==> Installed packages before minimization"
 #dpkg --get-selections | grep -v deinstall
 
 # Remove some packages to get a minimal install

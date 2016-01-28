@@ -6,10 +6,6 @@ print_green(){
 
 # Variables
 SSH_USER=${SSH_USERNAME:-vagrant}
-#CLEANUP_PAUSE=${CLEANUP_PAUSE:-0}
-
-#print_green "==> Pausing for ${CLEANUP_PAUSE} seconds..."
-#sleep ${CLEANUP_PAUSE}
 
 # Make sure udev does not block our network - http://6.ptmc.org/?p=164
 #print_green "==> Cleaning up udev rules"
@@ -54,6 +50,3 @@ print_green "==> Clearing last login information"
 >/var/log/lastlog
 >/var/log/wtmp
 >/var/log/btmp
-
-print_green "==> Disk usage after cleanup"
-df -h
