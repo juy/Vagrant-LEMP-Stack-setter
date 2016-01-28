@@ -1,5 +1,6 @@
 # Vagrant Files
 .vagrant
+vagrant/config.yml
 *.box
 __*
 
