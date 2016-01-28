@@ -26,6 +26,9 @@ ansible:
   provision: true
   verbose: false
 
+# Shell provision for box cleaning
+cleanup: false
+
 # Install components:
 # - To install a component set it to true.
 # - To leave a component out of the install set the value to false.

@@ -100,9 +100,11 @@ Vagrant.configure(2) do |config|
   end
 
   # Shell provision for box cleaning
-  config.vm.provision "shell", path: "./vagrant/provision/script/vagrant-clean/01-update.sh"
-  config.vm.provision "shell", path: "./vagrant/provision/script/vagrant-clean/02-minimize.sh"
-  config.vm.provision "shell", path: "./vagrant/provision/script/vagrant-clean/03-cleanup.sh"
-  config.vm.provision "shell", path: "./vagrant/provision/script/vagrant-clean/04-whiteout.sh"
+  if $config['cleanup']
+    config.vm.provision "shell", path: "./vagrant/provision/script/vagrant-clean/01-update.sh"
+    config.vm.provision "shell", path: "./vagrant/provision/script/vagrant-clean/02-minimize.sh"
+    config.vm.provision "shell", path: "./vagrant/provision/script/vagrant-clean/03-cleanup.sh"
+    config.vm.provision "shell", path: "./vagrant/provision/script/vagrant-clean/04-whiteout.sh"
+  end
 
 end
