@@ -4,13 +4,15 @@ vm:
   memory: 2048
   cpu: 1
 
+# Vagrant box
 box:
   name: "boxcutter/ubuntu1504"
   version: "2.0.13"
 
+# User name for VM
 user: "vagrant"
 
-# Set the name of the VM
+# Name of the VM
 machine_name: "vagrantlemp"
 
 # Default timezone
@@ -44,6 +46,7 @@ pgsql:
 redis:
   install: true
 
+# Composer global packages
 composer_global_packages:
   laravel/installer: "~1.0"
   laravel/lumen-installer: "~1.0"
@@ -51,6 +54,7 @@ composer_global_packages:
   laravel/envoy: "~1.0"
   vinkla/climb: "~1.0"
 
+# Node/NPM global packages
 node_global_packages:
   - bower
   - gulp
