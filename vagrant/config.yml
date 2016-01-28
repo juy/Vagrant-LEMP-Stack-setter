@@ -56,6 +56,7 @@ composer_global_packages:
   laravel/spark-installer: "~1.0"
   laravel/envoy: "~1.0"
   vinkla/climb: "~1.0"
+  hirak/prestissimo: "~0.1"
 
 # Node/NPM global packages
 node_global_packages:
