@@ -6,9 +6,7 @@ A development platform in a box, with everything you would need to develop PHP/L
 
 > Used "boxcutter/ubuntu1504" vagrant box *(only virtualbox provider)* with ansible provision. Modified it for our own use, especially for Laravel projects. 
 
-
 ----------
-
 
 ### Provision Content
 
@@ -59,7 +57,6 @@ Provision with ansible.
 - **Web GUI tools**
 	- [x] Beanstalkd console - https://github.com/ptrofimov/beanstalk_console
 	- [x] Redis Commander - https://github.com/joeferner/redis-commander
-
 
 ### License
 
