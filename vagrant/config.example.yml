@@ -35,8 +35,6 @@ cleanup: false
 # - To leave a component out of the install set the value to false.
 
 # SQL
-sqlite:
-  install: true
 mysql:
   install: true
   root_password: "secret"
