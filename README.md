@@ -6,19 +6,16 @@ A development platform in a box, with everything you would need to develop PHP/L
 
 > Used "boxcutter/ubuntu1504" vagrant box *(only virtualbox provider)* with ansible provision. Modified it for our own use, especially for Laravel projects. 
 
-#### Help support this project
-If you'd like to support this and other our creations projects, donate via [PayPal][paypal-donate-url].
-
-[![Support via PayPal][paypal-donate-img]][paypal-donate-url]
-
 
 ----------
 
 
 ### Provision Content
+
 Provision with ansible.
 
 ### Content
+
 - **OS**
 	- [x] Ubuntu Server 15.04 Vivid Vervet (64-bit) - [boxcutter/ubuntu1504](https://atlas.hashicorp.com/boxcutter/boxes/ubuntu1504)
 - **Base Packages**
@@ -65,10 +62,9 @@ Provision with ansible.
 
 
 ### License
+
 This project is open-sourced software licensed under the [MIT license][mit-url].
 
 
-[paypal-donate-img]: https://img.shields.io/badge/PayPal-donate-brightgreen.svg?style=flat-square
-[paypal-donate-url]: http://bit.ly/donateAngelside
 
 [mit-url]: http://opensource.org/licenses/MIT
