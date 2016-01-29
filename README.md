@@ -24,15 +24,15 @@ Provision with ansible.
 - **Base Packages**
 	- [x] Ansible
 	- [x] Nginx
-	- [x] PHP (php-fpm)
+	- [x] PHP 5.6.* (php-fpm)
 	- [x] Git, git-flow, git-extras
 	- [x] Composer
 	- [x] Ruby
 	- [x] HHVM (Only for composer speed up)
     - [x] VirtualBox Guest Additions
 - **Databases**
-	- [x] MySQL
-	- [x] PostgreSQL
+	- [x] MySQL 5.6.*
+	- [x] PostgreSQL 9.4.*
 	- [x] SQLite
 - **In-Memory Stores**
 	- [x] Redis
@@ -44,13 +44,14 @@ Provision with ansible.
 	- [x] Blackfire profiler
 	- [x] Ngrok
 - **Asset tools**
-	- [x] node.js, npm, ied
+	- [x] node.js 5.5.*, npm
 	- [x] bower
 	- [x] gulp
 - **Composer global packages**
-    - [x] Laravel Installer
-	- [x] Lumen Installer
-	- [x] Laravel Envoy
+    - [x] Laravel installer
+	- [x] Lumen installer
+	- [x] Spark installer
+	- [x] Laravel envoy
 - **SSH tools**
 	- [x] htop
 	- [x] mytop
