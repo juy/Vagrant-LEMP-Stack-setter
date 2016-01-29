@@ -1,3 +1,4 @@
+---
 # Virtual system configuration
 vm:
   ip: "192.168.13.13"

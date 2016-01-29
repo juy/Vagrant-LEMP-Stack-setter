@@ -1,5 +1,4 @@
 ---
-
 - name: Download node.js pre-installer
   get_url:
     url: https://deb.nodesource.com/setup_5.x

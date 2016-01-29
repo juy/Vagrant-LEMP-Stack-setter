@@ -1,11 +1,11 @@
 ---
 - name: Add nginx repository
   apt_repository: repo='ppa:nginx/stable' update_cache=yes
-  register: ppastable
+  register: ppanginxstable
 
 - name: Install nginx
   apt: name=nginx state=latest force=yes
-  when: ppastable|success
+  when: ppanginxstable|success
   register: nginxinstalled
 
 - name: Remove default vhost
@@ -48,7 +48,7 @@
     - "{{ srv_dir }}"
     - "{{ www_dir }}"
   when: nginxinstalled|success
-  
-  # Real-time metrics for nginx server  https://github.com/lebinh/ngxtop
+
+# Real-time metrics for nginx server  https://github.com/lebinh/ngxtop
 - name: Install ngxtop python package
   pip: name=ngxtop

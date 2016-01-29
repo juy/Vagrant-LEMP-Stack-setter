@@ -1,5 +1,5 @@
 ---
-locales: [ en_US.UTF-8, tr_TR.UTF-8 ]
+locales: [en_US.UTF-8, tr_TR.UTF-8]
 sys_packages:
   - software-properties-common
   - curl
