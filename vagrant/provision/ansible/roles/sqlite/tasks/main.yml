@@ -1,6 +1,0 @@
----
-- name: Install SQLite package
-  apt: name={{ item }} state=latest update_cache=yes
-  with_items:
-    - sqlite3
-    - libsqlite3-dev

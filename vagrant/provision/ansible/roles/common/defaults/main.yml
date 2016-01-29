@@ -9,6 +9,8 @@ sys_packages:
   - python2.7-dev
   - python-pip
   - ruby-dev
+  - sqlite3
+  - libsqlite3-dev
   - re2c
   - memcached
   - whois

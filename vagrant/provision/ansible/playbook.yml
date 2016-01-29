@@ -18,7 +18,6 @@
     - supervisor
     - nginx
     #
-    - { role: sqlite, when: "sqlite.install" }
     - { role: mysql, when: "mysql.install" }
     - { role: postgresql, when: "pgsql.install" }
     - { role: redis, when: "redis.install" }
