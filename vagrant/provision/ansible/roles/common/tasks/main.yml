@@ -25,8 +25,8 @@
     state=present backup=yes
 
 - name: Create /etc/ssl/certs directory
-  file: path={{ home_dir }}/etc/ssl/certs recurse=yes state=directory
+  file: path={{ home_dir }}/etc/curl_cacert recurse=yes state=directory
 #- name: Download cacert.pem
-#  get_url: url=http://curl.haxx.se/ca/cacert.pem dest=/etc/ssl/certs/curl_cacert.pem mode=644
+#  get_url: url=http://curl.haxx.se/ca/cacert.pem dest=/etc/curl_cacert/curl_cacert.pem mode=644
 - name: Copy cacert.pem
-  copy: src=cacert.pem dest={{ home_dir }}/etc/ssl/certs/curl_cacert.pem mode=640
+  copy: src=cacert.pem dest={{ home_dir }}/etc/curl_cacert/curl_cacert.pem mode=640
