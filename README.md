@@ -23,7 +23,7 @@ Provision with ansible.
 	- [x] Git, git-flow, git-extras
 	- [x] Composer
 	- [x] Ruby
-	- [x] HHVM (Only for composer speed up)
+	- [x] HHVM (We use for composer speed up with "composerh" command)
     - [x] VirtualBox Guest Additions
 - **Databases**
 	- [x] MySQL 5.6.*
