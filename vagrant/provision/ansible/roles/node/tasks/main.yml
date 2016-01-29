@@ -1,11 +1,20 @@
 ---
 
-- name: Node.js | Fetching node.js source
-  shell: curl -sL https://deb.nodesource.com/setup_5.x | bash -s
+- name: Download node.js pre-installer
+  get_url:
+    url: https://deb.nodesource.com/setup_5.x
+    dest: /tmp/nodejs_setup_5.x.sh
+    mode: 0755
   register: fetchnodejs
 
+- name: Run node.js pre-installer
+  command: >
+    bash nodejs_setup_5.x.sh
+    chdir=/tmp
+  when: fetchnodejs|success
+
 - name: Install NodeJS
-  apt: pkg=nodejs state=latest update_cache=true
+  apt: pkg=nodejs state=latest
   when: fetchnodejs|success
 
 - name: Create npm-packages directory
