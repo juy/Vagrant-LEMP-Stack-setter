@@ -15,8 +15,7 @@ fi
 #zstyle -e ':completion::*:*:*:hosts' hosts 'reply=(${=${${(f)"$(cat {/etc/ssh_,~/.ssh/known_}hosts(|2)(N)
 
 # Other customizations
-unsetopt CORRECT    # Disable autocorrect guesses. Happens when typing a wrong
-                    # command that may look like an existing one.
+unsetopt CORRECT  # Disable autocorrect guesses. Happens when typing a wrong command that may look like an existing one.
 
 
 # ---------------------------------------------------------------
