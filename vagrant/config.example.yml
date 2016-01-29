@@ -50,13 +50,16 @@ redis:
   install: true
 
 # Composer global packages
+# See commented examples below for usage; the 'release' is optional, and defaults to '@stable'.
 composer_global_packages:
-  laravel/installer: "~1.0"
-  laravel/lumen-installer: "~1.0"
-  laravel/spark-installer: "~1.0"
-  laravel/envoy: "~1.0"
-  vinkla/climb: "~1.0"
-  hirak/prestissimo: "~0.1"
+# - { name: phpunit/phpunit, release: "4.7.x" }
+# - { name: phpunit/phpunit, release: "@stable" }
+  - { name: laravel/envoy } # envoy need  "symfony/process": "~2.3"
+  - { name: laravel/spark-installer}
+  - { name: laravel/lumen-installer }
+  - { name: laravel/installer }
+  - { name: vinkla/climb }
+  - { name: hirak/prestissimo }
 
 # Node/NPM global packages
 node_global_packages:
