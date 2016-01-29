@@ -1,45 +1,25 @@
 ---
-# https://serversforhackers.com/an-ansible-tutorial
 
-- name: Ensure ubuntu distro is supported
-  get_url:
-    url='https://deb.nodesource.com/node/dists/{{ ubuntu_name }}/Release'
-    dest=/dev/null
-  register: distrosupported
-
-- name: Add nodesource keys
-  apt_key:
-    url=https://deb.nodesource.com/gpgkey/nodesource.gpg.key
-    state=present
-  when: distrosupported|success
-
-- name: Add nodesource apt sources list deb
-  apt_repository:
-    repo='deb https://deb.nodesource.com/node {{ ubuntu_name }} main'
-    state=present
-  when: distrosupported|success
-
-- name: Add node source apt sources list deb src
-  apt_repository:
-    repo='deb-src https://deb.nodesource.com/node {{ ubuntu_name }} main'
-    state=present
-  when: distrosupported|success
+- name: Node.js | Fetching node.js source
+  shell: curl -sL https://deb.nodesource.com/setup_5.x | bash -s
+  register: fetchnodejs
 
 - name: Install NodeJS
   apt: pkg=nodejs state=latest update_cache=true
-  when: distrosupported|success
+  when: fetchnodejs|success
 
 - name: Create npm-packages directory
   file: path='{{ home_dir }}/.npm-packages' state=directory owner={{ user }} group={{ user }}
-  when: distrosupported|success
+  when: fetchnodejs|success
 
 - name: Copy .npmrc
   copy: src={{ item }} dest={{ home_dir }}/{{ item }} owner={{ user }} group={{ user }} mode=640
   with_items:
     - .npmrc
+  when: fetchnodejs|success
 
 - name: Install node.js global packages
-  npm: name={{ item }} global=yes state=latest
+  npm: name={{ item }} global=yes state=present
   with_items: node_global_packages
   become_user: "{{ user }}"
-  when: distrosupported|success
+  when: fetchnodejs|success
