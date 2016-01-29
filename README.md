@@ -1,6 +1,6 @@
 ## Vagrant LEMP Stack - setter/provisioner
 
-**This part is setter/provisioner for Vagrant LEMP Stack project, for end user part please visit [Vagrant-LEMP-Stack](https://github.com/juy/Vagrant-LEMP-Stack). **
+**This part is setter/provisioner for Vagrant LEMP Stack project, for end user part please visit [Vagrant-LEMP-Stack](https://github.com/juy/Vagrant-LEMP-Stack).**
 
 A development platform in a box, with everything you would need to develop PHP/Laravel websites.
 
