@@ -52,7 +52,7 @@ redis:
 composer:
   # Composer global packages
   # See commented examples below for usage; the 'release' is optional, and defaults to '@stable'.
-  global_packages: []
+  global_packages:
     # - { name: phpunit/phpunit, release: "4.7.x" }
     # - { name: phpunit/phpunit, release: "@stable" }
       - { name: laravel/envoy } # envoy need  "symfony/process": "~2.3"
