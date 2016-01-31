@@ -4,7 +4,7 @@
 
 A development platform in a box, with everything you would need to develop PHP/Laravel websites.
 
-> Used "boxcutter/ubuntu1504" vagrant box *(only virtualbox provider)* with ansible provision. Modified it for our own use, especially for Laravel projects. 
+> Used "boxcutter/ubuntu1504" vagrant box *(only virtualbox provider)* with ansible provision. Modified it for our own use, especially for Laravel projects.
 
 ----------
 
