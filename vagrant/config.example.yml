@@ -61,6 +61,7 @@ composer:
       - { name: laravel/installer }
       - { name: vinkla/climb }
       - { name: hirak/prestissimo }
+      - { name: pyrech/composer-changelogs }
 
 # Node/NPM global packages
 node_global_packages:
