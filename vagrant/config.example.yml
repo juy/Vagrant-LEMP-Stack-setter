@@ -56,7 +56,6 @@ composer:
     # - { name: phpunit/phpunit, release: "4.7.x" }
     # - { name: phpunit/phpunit, release: "@stable" }
       - { name: laravel/envoy } # envoy need  "symfony/process": "~2.3"
-      - { name: laravel/spark-installer }
       - { name: laravel/lumen-installer }
       - { name: laravel/installer }
       - { name: vinkla/climb }
