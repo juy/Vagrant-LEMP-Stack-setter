@@ -1,11 +1,11 @@
 ---
 - name: Install various packages
   apt: name={{ item }} state=latest update_cache=yes cache_valid_time=3600
-  with_items: sys_packages
+  with_items: "{{ sys_packages }}"
 
 - name: Set locales
   locale_gen: name={{ item }} state=present
-  with_items: locales
+  with_items: "{{ locales }}"
 
 - name: Disable SSH last login print
   lineinfile: dest=/etc/ssh/sshd_config regexp="PrintLastLog yes" line="PrintLastLog no"

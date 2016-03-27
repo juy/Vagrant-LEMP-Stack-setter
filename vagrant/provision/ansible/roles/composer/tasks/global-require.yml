@@ -5,4 +5,4 @@
     COMPOSER_HOME={{ composer_home_path }}
     composer global require {{ item.name }}:{{ item.release | default('@stable') }} --no-progress
     creates={{ composer_home_path }}/vendor/{{ item.name }}
-  with_items: composer.global_packages
+  with_items: "{{ composer.global_packages }}"

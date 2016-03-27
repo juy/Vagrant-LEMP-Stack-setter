@@ -8,7 +8,7 @@
 - name: Install Blackfire agent & Blackfire PHP probe
   apt: name={{ item }} state=latest
   with_items:
-    - blackfire-agent
-    - blackfire-php
+    - "{{ blackfire-agent }}"
+    - "{{ blackfire-php }}"
   notify:
      - restart php5-fpm
