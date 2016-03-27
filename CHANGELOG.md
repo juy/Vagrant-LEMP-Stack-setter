@@ -6,6 +6,7 @@ All notable changes to this project will be documented in this file.
 ## Development
 
 ### Changes
+- Change Ubuntu version to 15.10, ubuntu/wily64 (https://atlas.hashicorp.com/ubuntu/boxes/wily64/)
 - Composer role completely rewritten
 - Node js role completely rewritten
 - Modify php playbooks for php 5.6 and php 7.0 both installation
