@@ -4,6 +4,9 @@ vagrant/config.yml
 *.box
 __*
 
+# Ansible
+vagrant/provision/ansible/playbook.retry
+
 # IDE
 .idea
 .idea/*
