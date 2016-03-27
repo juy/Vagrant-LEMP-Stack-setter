@@ -34,6 +34,10 @@ cleanup: false
 # - To install a component set it to true.
 # - To leave a component out of the install set the value to false.
 
+# PHP
+php:
+  php56: true  # This is optional/secondary php version, default php is php 7.0
+
 # SQL
 mysql:
   install: true
