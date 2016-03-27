@@ -2,11 +2,10 @@
 - name: Add redis repository
   apt_repository: repo='ppa:rwky/redis' update_cache=yes
 
-- name: Install Redis server and PHP-Redis library
+- name: Install Redis Server
   apt: name={{ item }} state=latest
   with_items:
     - redis-server
-    - php5-redis
 
 - name: Create init script
   template: src=init.tpl dest=/etc/init.d/redis mode=0755
