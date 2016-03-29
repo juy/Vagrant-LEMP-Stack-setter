@@ -1,6 +1,7 @@
 ---
 - name: Add nginx repository
   apt_repository: repo='ppa:nginx/stable' update_cache=yes
+  #apt_repository: repo='ppa:nginx/development' update_cache=yes
   register: ppanginxstable
 
 - name: Install nginx
