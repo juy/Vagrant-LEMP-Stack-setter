@@ -7,22 +7,26 @@
   pre_tasks:
     - name: Load config file
       include_vars: "{{ item }}"
-      with_items: config_file
+      with_items: "{{ config_file }}"
   roles:
     - { role: test, tags: ["test"], when: "test.install" }
+    #
     - common
     - git
     - prezto
     - dotfiles
-    - node
     - supervisor
+    - node
     - nginx
     #
     - { role: mysql, when: "mysql.install" }
     - { role: postgresql, when: "pgsql.install" }
     - { role: redis, when: "redis.install" }
-    - php5.6
-    - hhvm
+    #
+    #- php
+    #- php7.0
+    #- { role: php5.6, when: "php.php56" }
+    #
     - { role: xdebug, when: "xdebug.install" }
     - composer
     - dashboard
