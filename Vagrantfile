@@ -80,15 +80,24 @@ Vagrant.configure(2) do |config|
   end
 
   # Ansible provisioning
+
+  # Set different playbook for development, don't hurt real playbook
+  if $config['ansible']['development']
+    $playbook = 'playbook-dev'
+  else
+    $playbook = 'playbook'
+  end
+
+  # Provisioning
   if $config['ansible']['provision']
     if Vagrant::Util::Platform.windows?
       config.vm.provision "shell" do |s|
         s.path = "./vagrant/provision/script/ansible_windows.sh"
-        s.args = [ "/vagrant/provision/ansible/playbook.yml", $config['vm']['ip'], ($config['ansible']['verbose']) ? "y" : "n"]
+        s.args = [ "/vagrant/provision/ansible/#{$playbook}.yml", $config['vm']['ip'], ($config['ansible']['verbose']) ? "y" : "n"]
       end
     else
       config.vm.provision :ansible do |ansible|
-        ansible.playbook = "vagrant/provision/ansible/playbook.yml"
+        ansible.playbook = "vagrant/provision/ansible/#{$playbook}.yml"
         ansible.inventory_path = "vagrant/provision/ansible/inventories/dev"
         ansible.limit = "all"
         ansible.sudo = true

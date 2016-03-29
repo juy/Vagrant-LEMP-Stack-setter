@@ -5,6 +5,7 @@ vagrant/config.yml
 __*
 
 # Ansible
+vagrant/provision/ansible/playbook-dev.yml
 vagrant/provision/ansible/playbook.retry
 
 # IDE

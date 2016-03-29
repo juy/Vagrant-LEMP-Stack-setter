@@ -26,6 +26,8 @@ use_cachier: true
 ansible:
   provision: true
   verbose: false
+  # Development mode
+  development: false
 
 # Shell provision for box cleaning
 cleanup: false
