@@ -1,5 +1,4 @@
 ---
-
 - name: Add PostgreSQL APT repository key
   apt_key:
     id: ACCC4CF8
