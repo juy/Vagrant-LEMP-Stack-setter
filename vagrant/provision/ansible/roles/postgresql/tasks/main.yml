@@ -1,6 +1,6 @@
 ---
 
-- name: Add APT repository key
+- name: Add PostgreSQL APT repository key
   apt_key:
     id: ACCC4CF8
     url: https://www.postgresql.org/media/keys/ACCC4CF8.asc
