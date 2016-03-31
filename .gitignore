@@ -7,6 +7,7 @@ __*
 # Ansible
 vagrant/provision/ansible/playbook-dev.yml
 vagrant/provision/ansible/playbook.retry
+vagrant/provision/ansible/playbook-dev.retry
 
 # IDE
 .idea
