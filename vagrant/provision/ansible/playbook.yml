@@ -20,7 +20,7 @@
     - nginx
     #
     - { role: mysql, when: "mysql.install" }
-    - { role: postgresql9.4, when: "pgsql.install" }
+    - { role: postgresql, when: "pgsql.install" }
     - { role: redis, when: "redis.install" }
     #
     #- php

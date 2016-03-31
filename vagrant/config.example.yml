@@ -47,6 +47,7 @@ mysql:
   database: "homestead"
 pgsql:
   install: true
+  version: 9.5
   root_password: "secret"
   database: "homestead"
 
