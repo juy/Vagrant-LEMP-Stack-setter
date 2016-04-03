@@ -6,8 +6,9 @@ vm:
   cpu: 1
 
 # Vagrant box
+# Ubuntu 15.10 https://atlas.hashicorp.com/ubuntu/boxes/wily64/
 box:
-  name: "ubuntu/wily64" # ubuntu 15.10 https://atlas.hashicorp.com/ubuntu/boxes/wily64/
+  name: "ubuntu/wily64"
   #version: "" # Latest version
 
 # User name for VM
