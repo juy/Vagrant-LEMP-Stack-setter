@@ -39,7 +39,7 @@ cleanup: false
 
 # PHP
 php:
-  php56: true  # This is optional/secondary php version, default php is php 7.0
+  php56: true # This is optional/secondary php version, default php is php 7.0
 
 # SQL
 mysql:
