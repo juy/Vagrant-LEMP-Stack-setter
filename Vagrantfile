@@ -3,21 +3,24 @@
 # See the readme file (README.md) for more information.
 # Contribute to this project at : https://github.com/juy/Vagrant-LEMP-Stack-setter
 
+
 # Check vagrant version
 Vagrant.require_version ">= 1.5.0"
 
+# Require
 require 'yaml'
-$config_file = "vagrant/config.yml"
+require File.expand_path(File.dirname(__FILE__) + '/vagrant/rb/colorizator.rb')
 
 # Check for config file
-if !File.file?($config_file)
-  puts "Config file is missing: #{$config_file}\n"
-  puts "Please rename config.example.yml to config.yml in vagrant/ directory"
-  exit
-end
+$config_file = "vagrant/config1.yml"
 
-# Include config from config file
-$config = YAML::load_file($config_file)
+if File.exists?($config_file)
+  $config = YAML::load_file($config_file) # Include config from config file
+else
+  $text = "\nConfig file is missing: #{$config_file}\n" +
+          "Please rename config.example.yml to config.yml in vagrant/ directory"
+  abort Colorizator.colorize($text, "light red")
+end
 
 # Vagrant configure
 Vagrant.configure(2) do |config|
