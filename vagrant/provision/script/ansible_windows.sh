@@ -18,7 +18,7 @@ if ! which ansible > /dev/null; then
 
     # Install ansible
     sudo apt-get update -qq
-    sudo apt-get install -y -qq software-properties-common
+    sudo apt-get install -y -qq software-properties-common python-software-properties
     #sudo apt-add-repository -y ppa:ansible/ansible # Not work on Xenial, work on Wily
     sudo apt-get update -qq
     sudo apt-get install -y -qq ansible
