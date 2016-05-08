@@ -5,7 +5,7 @@
 
 - name: Add APT repository
   apt_repository:
-    repo: 'deb http://ams2.mirrors.digitalocean.com/mariadb/repo/10.1/ubuntu wily main'
+    repo: 'deb http://ams2.mirrors.digitalocean.com/mariadb/repo/10.1/ubuntu xenial main'
     state: present
     update_cache: yes
   register: mariadb_deb

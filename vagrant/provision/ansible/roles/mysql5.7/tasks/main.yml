@@ -8,13 +8,9 @@
 - debconf: name="mysql-community-server" question="mysql-community-server/root-pass" vtype="password" value={{ mysql.root_password|default('') }}
 - debconf: name="mysql-community-server" question="mysql-community-server/re-root-pass" vtype="password" value={{ mysql.root_password|default('') }}
 
-#- name: Add mysql repository
-#  apt_repository: repo='deb http://repo.mysql.com/apt/debian/ wily mysql-5.7' update_cache=yes
-#  register: mysql_deb
-
 - name: Add mysql repository
   apt_repository:
-    repo: 'deb http://repo.mysql.com/apt/debian/ wily mysql-5.7'
+    repo: 'deb http://repo.mysql.com/apt/debian/ xenial mysql-5.7'
     state: present
     update_cache: yes
   register: mysql_deb
