@@ -12,8 +12,17 @@ require 'yaml'
 require File.expand_path(File.dirname(__FILE__) + '/vagrant/rb/colorizator.rb')
 require File.expand_path(File.dirname(__FILE__) + '/vagrant/rb/check_requirements.rb')
 
+# Config file path
+config_file = "vagrant/config.yml"
+
+# Required plugins
+required_plugins = ["vagrant-vbguest", "vagrant-cachier"]
+
 # Check requirements
-Check.requirements()
+Check.requirements(config_file, required_plugins)
+
+# Include config from config file
+$config = YAML::load_file(config_file)
 
 # Vagrant configure
 Vagrant.configure(2) do |config|
