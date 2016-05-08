@@ -8,6 +8,7 @@ vm:
 # Vagrant box
 box:
   name: "boxcutter/ubuntu1604"
+  #version: "" # Latest version
 
 # User name for VM
 user: "vagrant"
