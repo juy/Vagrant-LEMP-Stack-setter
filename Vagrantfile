@@ -11,9 +11,10 @@ Vagrant.require_version ">= 1.5.0"
 require 'yaml'
 require File.expand_path(File.dirname(__FILE__) + '/vagrant/rb/colorizator.rb')
 
-# Check for config file
+# Config file path
 $config_file = "vagrant/config.yml"
 
+# Check for config file
 if File.exists?($config_file)
   $config = YAML::load_file($config_file) # Include config from config file
 else
