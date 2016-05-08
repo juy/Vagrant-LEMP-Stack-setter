@@ -4,7 +4,6 @@ class VagrantConfig
 
         # Configure the box
         config.vm.box = settings['box']['name']
-        config.vm.box_version = settings['box']['version']
         config.vm.box_check_update = false
         config.vm.boot_timeout = 120
 
