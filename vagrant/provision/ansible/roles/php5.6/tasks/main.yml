@@ -1,16 +1,13 @@
 ---
-- name: Add PHP 5.6 PPA
-  apt_repository: repo="ppa:ondrej/php5-5.6" update_cache=yes
-
 - name: Install PHP 5.6
   apt: name="{{ item }}" state=latest force=yes
-  with_items: php_modules
+  with_items: "{{ php_modules }}"
 
 - name: Make mcrypt available
-  file: src=/etc/php5/mods-available/mcrypt.ini dest=/etc/php5/cli/conf.d/20-mcrypt.ini state=link force=yes
+  file: src=/etc/php/5.6/mods-available/mcrypt.ini dest=/etc/php/5.6/cli/conf.d/20-mcrypt.ini state=link force=yes
 
-- name: Set php5-fpm user
-  lineinfile: dest=/etc/php5/fpm/pool.d/www.conf regexp="{{ item.regex }}" line="{{ item.line }}"
+- name: Set PHP-FPM user
+  lineinfile: dest=/etc/php/5.6/fpm/pool.d/www.conf regexp="{{ item.regex }}" line="{{ item.line }}"
   with_items:
     - {regex: "^user = .*", line: "user = {{ user }}"}
     - {regex: "^group = .*", line: "group = {{ user }}"}
@@ -19,8 +16,8 @@
     - {regex: "^;?listen.mode", line: "listen.mode = 0666"}
 
 - name: Set some PHP-FPM settings
-  template: src=php-fpm.ini dest=/etc/php5/fpm/conf.d/00-php.ini
+  template: src=php-fpm.ini dest=/etc/php/5.6/fpm/conf.d/00-php.ini
 
 - name: Set some PHP-CLI settings
-  template: src=php.ini dest=/etc/php5/cli/conf.d/00-php.ini
-  notify: restart php5-fpm
+  template: src=php.ini dest=/etc/php/5.6/cli/conf.d/00-php.ini
+  notify: restart php5.6-fpm
