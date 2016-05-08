@@ -49,10 +49,10 @@ Vagrant.configure(2) do |config|
   #config.ssh.password = "vagrant"
   #config.ssh.insert_key = true
   config.ssh.insert_key = false
+  #config.ssh.forward_agent = true
 
   # Private network IP
   config.vm.network :private_network, ip: settings['vm']['ip']
-  #config.ssh.forward_agent = true
 
   # Allow caching to be used
   # http://fgrehm.viewdocs.io/vagrant-cachier/usage
