@@ -1,0 +1,6 @@
+---
+- name: Add apt-fast repo
+  apt_repository: repo='ppa:saiarcot895/myppa' update_cache=yes
+
+- name: Install apt-fast
+  apt: name=apt-fast state=latest

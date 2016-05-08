@@ -11,6 +11,7 @@
   roles:
     - { role: test, tags: ["test"], when: "test.install" }
     #
+    - apt-fast
     - common
     - git
     - prezto
