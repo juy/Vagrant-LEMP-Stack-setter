@@ -1,0 +1,83 @@
+---
+
+- name: Add repository key
+  apt_key: keyserver=keyserver.ubuntu.com id=0xcbcb082a1bb943db
+
+- name: Add APT repository
+  apt_repository:
+    repo: 'deb http://ams2.mirrors.digitalocean.com/mariadb/repo/10.1/ubuntu wily main'
+    state: present
+    update_cache: yes
+  register: mariadb_deb
+
+- name: Install
+  apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: yes
+    cache_valid_time: 3600
+  with_items:
+    - mariadb-server
+    - mariadb-client
+    - python-mysqldb
+  when: mariadb_deb|success
+  register: mariadb_installed
+
+- name: Start and enable service
+  service: name=mysql state=started enabled=yes
+
+
+
+# secure-installation.yml
+
+# Set root password
+# UPDATE mysql.user SET Password=PASSWORD('mysecret') WHERE User='root';
+# FLUSH PRIVILEGES;
+
+- name: Set root Password
+  mysql_user: name=root
+              host={{ item }}
+              password={{ mysql.root_password }}
+              check_implicit_admin=yes
+              login_user=root
+              login_password={{ mysql.root_password }}
+              state=present
+  with_items:
+    - localhost
+    - 127.0.0.1
+    - ::1
+
+- name: Copy .my.cnf file
+  template: src=my.cnf.j2 dest=/root/.my.cnf owner=root mode=0600
+
+- name: Reload privilege tables
+  command: 'mysql -ne "{{ item }}"'
+  with_items:
+    - FLUSH PRIVILEGES
+  changed_when: False
+
+- name: Remove anonymous users
+  command: 'mysql -ne "{{ item }}"'
+  with_items:
+    - DELETE FROM mysql.user WHERE User=''
+  changed_when: False
+
+- name: Disallow root login remotely
+  command: 'mysql -ne "{{ item }}"'
+  with_items:
+    - DELETE FROM mysql.user WHERE User='root' AND Host NOT IN ('localhost', '127.0.0.1', '::1')
+  changed_when: False
+
+- name: Remove test database and access to it
+  command: 'mysql -ne "{{ item }}"'
+  with_items:
+    - DROP DATABASE test
+    - DELETE FROM mysql.db WHERE Db='test' OR Db='test\\_%'
+  changed_when: False
+  ignore_errors: True
+
+- name: Reload privilege tables
+  command: 'mysql -ne "{{ item }}"'
+  with_items:
+    - FLUSH PRIVILEGES
+  changed_when: False
