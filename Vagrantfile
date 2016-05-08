@@ -11,6 +11,8 @@ Vagrant.require_version ">= 1.5.1"
 require 'yaml'
 require File.expand_path(File.dirname(__FILE__) + '/vagrant/rb/colorizator.rb')
 require File.expand_path(File.dirname(__FILE__) + '/vagrant/rb/check_requirements.rb')
+require File.expand_path(File.dirname(__FILE__) + '/vagrant/rb/provision_ansible.rb')
+require File.expand_path(File.dirname(__FILE__) + '/vagrant/rb/provision_clean.rb')
 
 # Config file path
 config_file = "vagrant/config.yml"
@@ -85,40 +87,11 @@ Vagrant.configure(2) do |config|
   end
 
   # Ansible provisioning
-
-  # Set different playbook for development, don't hurt real playbook
-  if settings['ansible']['development']
-    playbook = 'playbook-dev'
-  else
-    playbook = 'playbook'
-  end
-
-  # Provisioning
-  if settings['ansible']['provision']
-    if Vagrant::Util::Platform.windows?
-      config.vm.provision "shell" do |s|
-        s.path = "./vagrant/provision/script/ansible_windows.sh"
-        s.args = [ "/vagrant/provision/ansible/#{playbook}.yml", settings['vm']['ip'], (settings['ansible']['verbose']) ? "y" : "n"]
-      end
-    else
-      config.vm.provision :ansible do |ansible|
-        ansible.playbook = "vagrant/provision/ansible/#{playbook}.yml"
-        ansible.inventory_path = "vagrant/provision/ansible/inventories/dev"
-        ansible.limit = "all"
-        ansible.sudo = true
-        if settings['ansible']['verbose']
-          ansible.verbose = "vv"
-        end
-      end
-    end
-  end
+  Provision.ansible(config, settings)
 
   # Shell provision for box cleaning
   if settings['cleanup']
-    config.vm.provision "shell", path: "./vagrant/provision/script/vagrant-clean/01-update.sh"
-    config.vm.provision "shell", path: "./vagrant/provision/script/vagrant-clean/02-minimize.sh"
-    config.vm.provision "shell", path: "./vagrant/provision/script/vagrant-clean/03-cleanup.sh"
-    config.vm.provision "shell", path: "./vagrant/provision/script/vagrant-clean/04-whiteout.sh"
+    Provision.cleanup(config)
   end
 
 end
