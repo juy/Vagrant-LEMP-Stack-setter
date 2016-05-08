@@ -9,7 +9,6 @@ vm:
 # Ubuntu 15.10 https://atlas.hashicorp.com/ubuntu/boxes/wily64/
 box:
   name: "ubuntu/wily64"
-  #version: "" # Latest version
 
 # User name for VM
 user: "vagrant"
