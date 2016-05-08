@@ -5,7 +5,7 @@
 
 
 # Check vagrant version
-Vagrant.require_version ">= 1.5.1"
+Vagrant.require_version ">= 1.8.0"
 
 # Require
 require 'yaml'
