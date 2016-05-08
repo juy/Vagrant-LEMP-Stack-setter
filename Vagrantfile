@@ -21,20 +21,20 @@ required_plugins = ["vagrant-vbguest", "vagrant-cachier"]
 # Check requirements
 Check.requirements(config_file, required_plugins)
 
-# Include config from config file
-$config = YAML::load_file(config_file)
+# Include settings from config file
+$settings = YAML::load_file(config_file)
 
 # Vagrant configure
 Vagrant.configure(2) do |config|
 
   # Configure the box
-  config.vm.box = $config['box']['name']
-  config.vm.box_version = $config['box']['version']
+  config.vm.box = $settings['box']['name']
+  config.vm.box_version = $settings['box']['version']
   config.vm.box_check_update = false
   config.vm.boot_timeout = 120
 
   # Set the name of the VM. See: http://stackoverflow.com/a/17864388/100134
-  config.vm.define "#{$config['machine_name']}" do |t|
+  config.vm.define "#{$settings['machine_name']}" do |t|
   end
 
   # https://github.com/dotless-de/vagrant-vbguest
@@ -49,12 +49,12 @@ Vagrant.configure(2) do |config|
   config.ssh.insert_key = false
 
   # Private network IP
-  config.vm.network :private_network, ip: $config['vm']['ip']
+  config.vm.network :private_network, ip: $settings['vm']['ip']
   #config.ssh.forward_agent = true
 
   # Allow caching to be used
   # http://fgrehm.viewdocs.io/vagrant-cachier/usage
-  if $config['use_cachier']
+  if $settings['use_cachier']
     if Vagrant.has_plugin?("vagrant-cachier")
       config.cache.scope = :box
       config.cache.auto_detect = false
@@ -74,8 +74,8 @@ Vagrant.configure(2) do |config|
   config.vm.provider :virtualbox do |v|
       v.customize [
           "modifyvm", :id,
-          "--memory", $config['vm']['memory'],
-          "--cpus", $config['vm']['cpu'],
+          "--memory", $settings['vm']['memory'],
+          "--cpus", $settings['vm']['cpu'],
           "--natdnshostresolver1", "on",
           "--natdnsproxy1", "on",
           "--ioapic", "on",
@@ -87,18 +87,18 @@ Vagrant.configure(2) do |config|
   # Ansible provisioning
 
   # Set different playbook for development, don't hurt real playbook
-  if $config['ansible']['development']
+  if $settings['ansible']['development']
     $playbook = 'playbook-dev'
   else
     $playbook = 'playbook'
   end
 
   # Provisioning
-  if $config['ansible']['provision']
+  if $settings['ansible']['provision']
     if Vagrant::Util::Platform.windows?
       config.vm.provision "shell" do |s|
         s.path = "./vagrant/provision/script/ansible_windows.sh"
-        s.args = [ "/vagrant/provision/ansible/#{$playbook}.yml", $config['vm']['ip'], ($config['ansible']['verbose']) ? "y" : "n"]
+        s.args = [ "/vagrant/provision/ansible/#{$playbook}.yml", $settings['vm']['ip'], ($settings['ansible']['verbose']) ? "y" : "n"]
       end
     else
       config.vm.provision :ansible do |ansible|
@@ -106,7 +106,7 @@ Vagrant.configure(2) do |config|
         ansible.inventory_path = "vagrant/provision/ansible/inventories/dev"
         ansible.limit = "all"
         ansible.sudo = true
-        if $config['ansible']['verbose']
+        if $settings['ansible']['verbose']
           ansible.verbose = "vv"
         end
       end
@@ -114,7 +114,7 @@ Vagrant.configure(2) do |config|
   end
 
   # Shell provision for box cleaning
-  if $config['cleanup']
+  if $settings['cleanup']
     config.vm.provision "shell", path: "./vagrant/provision/script/vagrant-clean/01-update.sh"
     config.vm.provision "shell", path: "./vagrant/provision/script/vagrant-clean/02-minimize.sh"
     config.vm.provision "shell", path: "./vagrant/provision/script/vagrant-clean/03-cleanup.sh"
