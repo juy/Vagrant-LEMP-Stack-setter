@@ -16,10 +16,10 @@ if ! which ansible > /dev/null; then
     # Ansible does't exist, install it
     echo "Installing ansible";
 
-    # Install ansible - On test ansible version is 2.0.0.2-1ppa~vivid
+    # Install ansible
     sudo apt-get update -qq
     sudo apt-get install -y -qq software-properties-common
-    sudo apt-add-repository -y ppa:ansible/ansible
+    #sudo apt-add-repository -y ppa:ansible/ansible # Not work on Xenial, work on Wily
     sudo apt-get update -qq
     sudo apt-get install -y -qq ansible
     sudo apt-get install -y -qq sshpass
