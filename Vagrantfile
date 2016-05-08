@@ -12,7 +12,7 @@ require 'yaml'
 require File.expand_path(File.dirname(__FILE__) + '/vagrant/rb/colorizator.rb')
 
 # Check for config file
-$config_file = "vagrant/config1.yml"
+$config_file = "vagrant/config.yml"
 
 if File.exists?($config_file)
   $config = YAML::load_file($config_file) # Include config from config file
