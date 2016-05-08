@@ -1,7 +1,7 @@
 ---
 
 - name: Add repository key
-  apt_key: keyserver=keyserver.ubuntu.com id=0xcbcb082a1bb943db
+  apt_key: keyserver=keyserver.ubuntu.com id=0xF1656F24C74CD1D8
 
 - name: Add APT repository
   apt_repository:
@@ -37,10 +37,10 @@
 - name: Set root Password
   mysql_user: name=root
               host={{ item }}
-              password={{ mysql.root_password }}
+              password={{ mariadb.root_password }}
               check_implicit_admin=yes
               login_user=root
-              login_password={{ mysql.root_password }}
+              login_password={{ mariadb.root_password }}
               state=present
   with_items:
     - localhost
