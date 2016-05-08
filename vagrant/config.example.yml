@@ -41,7 +41,7 @@ php:
   php56: true # This is optional/secondary php version, default php is php 7.0
 
 # SQL
-mysql:
+mariadb:
   install: true
   root_password: "secret"
   database: "homestead"

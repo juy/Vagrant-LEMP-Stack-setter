@@ -20,7 +20,7 @@
     - node
     - nginx
     #
-    - { role: mysql, when: "mysql.install" }
+    - { role: mariadb, when: "mariadb.install" }
     - { role: postgresql, when: "pgsql.install" }
     - { role: redis, when: "redis.install" }
     #
