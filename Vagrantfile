@@ -51,8 +51,16 @@ Vagrant.configure(2) do |config|
   config.ssh.insert_key = false
   #config.ssh.forward_agent = true
 
+  # Prevent TTY Errors
+  #config.ssh.shell = "bash -c 'BASH_ENV=/etc/profile exec bash'"
+
+  #config.vm.provision "fix-no-tty", type: "shell" do |s|
+  #    s.privileged = false
+  #    s.inline = "sudo sed -i '/tty/!s/mesg n/tty -s \\&\\& mesg n/' /root/.profile"
+  #end
+
   # Private network IP
-  config.vm.network :private_network, ip: settings['vm']['ip']
+  config.vm.network :private_network, ip: settings['vm']['ip'], auto_config: false
 
   # Allow caching to be used
   # http://fgrehm.viewdocs.io/vagrant-cachier/usage
