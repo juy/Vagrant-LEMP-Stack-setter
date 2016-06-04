@@ -65,7 +65,6 @@ composer:
     - { name: laravel/envoy } # envoy need  "symfony/process": "~2.3"
     - { name: laravel/lumen-installer }
     - { name: laravel/installer }
-    - { name: vinkla/climb }
     - { name: hirak/prestissimo }
     - { name: pyrech/composer-changelogs }
 
