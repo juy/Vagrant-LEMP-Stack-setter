@@ -92,7 +92,6 @@ alias apt-add-repository='sudo apt-add-repository'
 # Other
 alias cl='clear'
 alias wget='wget -c'
-alias npm='npm --no-bin-links'
 
 alias cp='cp -iv'
 alias rm='rm -i'
