@@ -1,6 +1,6 @@
 ## Vagrant LEMP Stack - setter/provisioner
 
-> ### This project has been abandoned and will no longer be updated.
+> ### ⚠️ This project has been abandoned and will no longer be updated.
 
 **This part is setter/provisioner for Vagrant LEMP Stack project, for end user part please visit [Vagrant-LEMP-Stack](https://github.com/juy/Vagrant-LEMP-Stack).**
 
